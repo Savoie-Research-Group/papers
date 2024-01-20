@@ -1,1 +1,1 @@
-This is the toy example (jupyter notebook) for deductive perspective.
+This is the Jupyter notebook containing the toy example described in the deduction perspective.
