@@ -1,0 +1,5 @@
+# chemprop hyperopt example for random split. hyperopt was only done on random split and all other splits were trained with the same hyperparameters.
+    - python hyperparameter_optimization.py --data_path ../data/splits/random_90-10_train-test_split/train_val_smi_hl.csv --dataset_type regression --loss_function my_hinge --metric my_hinge --num_iters 50 --epochs 100 --config_save_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/hyperopt.json
+
+# chemprop train example for random split on 4 cores.
+    - python train.py --data_path ../data/splits/random_90-10_train-test_split/train_val_smi_hl.csv --separate_test_path ../data/splits/random_90-10_train-test_split/test_smi_hl.csv --save_dir ../pretrained_models/chemprop_models/random_90-10_train-test_split --dataset_type regression --loss_function my_hinge --metric my_hinge --config_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/hyperopt.json --epochs 300 --num_workers 4 --batch_size 128

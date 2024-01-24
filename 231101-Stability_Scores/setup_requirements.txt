@@ -1,0 +1,13 @@
+## all tensorflow training + testing on Nvidia GPUs supporting these cuda + cudnn versions
+    - cuda version: 11.2.0
+    - cudnn version: 8.1
+
+## all pytorch training + testing on Nvidia GPUs supporting these cuda + cudnn versions
+    - cuda version: 11.7.0
+    - cudnn version: 8.6
+
+# Conda environment stored in pythonML_environment.yml
+    - Conda version: 4.9.2
+    - Python version: 3.10.6
+    - To recreate the environment, run: 'conda env create --file pythonML_environment.yml'
+    - To activate this environment, run: 'conda activate pythonML'

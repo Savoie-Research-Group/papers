@@ -1,0 +1,7 @@
+# chemprop predict example for random split.
+
+    # predict all train_val_data
+        - python predict.py --test_path ../data/splits/random_90-10_train-test_split/train_val_smi_hl.csv --checkpoint_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/fold_0/model_0/model.pt --preds_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/train_val_smi_pred.csv
+
+    # predict all test_data
+        - python predict.py --test_path ../data/splits/random_90-10_train-test_split/test_smi_hl.csv --checkpoint_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/fold_0/model_0/model.pt --preds_path ../pretrained_models/chemprop_models/random_90-10_train-test_split/test_smi_pred.csv

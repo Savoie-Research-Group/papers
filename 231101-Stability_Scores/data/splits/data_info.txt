@@ -1,0 +1,4 @@
+Each split directory contains:
+    - data_info.txt: containslength of training and testing sets. also contains training log(half-lives) mean and std values to be used for z normalizing log(half-lives) data
+    - train_val_smi_hl.csv, and test_smi_hl.csv: train:test split csv files for Chemprop
+    - x_fp_train.npy, x_fp_test.npy, y_hl_train.npy, y_hl_test.npy: train:test split numpy files for our MLP model

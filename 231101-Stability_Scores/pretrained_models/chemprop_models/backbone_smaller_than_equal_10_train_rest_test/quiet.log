@@ -1,0 +1,8 @@
+Fold 0
+Model 0 best validation my_hinge = 2.577686 on epoch 283
+Model 0 test my_hinge = 94.560861
+Ensemble test my_hinge = 94.560861
+1-fold cross validation
+	Seed 0 ==> test my_hinge = 94.560861
+Overall test my_hinge = 94.560861 +/- 0.000000
+Elapsed time = 1:25:01
