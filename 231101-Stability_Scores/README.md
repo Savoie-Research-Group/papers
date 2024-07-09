@@ -1,7 +1,7 @@
 
-# Learning Stability Scores from Computationally Generated Kinetic Data
+# Machine Learning of Stability Scores from Kinetic Data
 
-This directory contained all the data, python scripts and pretrained models to train, test, predict, and reproduce the results from the machine learning and data analysis sections 2.2, 2.3, SI 1.4, and SI 4 of the chemrxiv preprint of the paper: https://doi.org/10.26434/chemrxiv-2023-0pjxv
+This directory contains all the data, python scripts and pretrained models to train, test, predict, and reproduce the results from the machine learning and data analysis sections 2.2, 2.3, ESI 1.3, and ESI 4 of the paper: DOI: [10.1039/D4DD00036F](https://doi.org/10.1039/D4DD00036F)
 
 
 ## Author(s)
