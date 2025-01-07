@@ -6,9 +6,9 @@ This directory contains all the data, python scripts and pretrained models to tr
 
 ## Author(s)
 
-- Veerupaksh Singla | [singla2@purdue.edu](mailto:singla2@purdue.edu) | [GitHub](https://github.com/veerupaksh)
-- Qiyuan Zhao | [zhaoqiy@med.umich.edu](mailto:zhaoqiy@med.umich.edu) | [GitHub](https://github.com/zhaoqy1996)
-- Brett M. Savoie (Corresponding Author) | [bsavoie@purdue.edu](mailto:bsavoie@purdue.edu) | [GitHub](https://github.com/Savoie-Research-Group)
+- Veerupaksh Singla | [GitHub](https://github.com/veerupaksh)
+- Qiyuan Zhao | [GitHub](https://github.com/zhaoqy1996)
+- Brett M. Savoie (Corresponding Author) | [bsavoie2@nd.edu](mailto:bsavoie2@nd.edu) | [GitHub](https://github.com/Savoie-Research-Group)
 
 ## Installation
 The code is tested on the versions of software and libraries listed here. May or may not work with other versions.
