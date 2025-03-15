@@ -14,6 +14,7 @@ To set up RMG-Py, and the RMG-Py Database, clone the corresponding GitHub Reposi
 
 ## Directory tree description
 
+```bash
 .
 ├── code
 │   ├── data_ops_analysis_code
@@ -569,3 +570,4 @@ To set up RMG-Py, and the RMG-Py Database, clone the corresponding GitHub Reposi
 │               └── model_fold_9_info.json
 ├── python_requirements.txt
 └── README.md
+```
