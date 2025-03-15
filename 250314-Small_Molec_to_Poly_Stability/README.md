@@ -19,13 +19,13 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 ```bash
 .
 ├── code
-│   ├── data_ops_analysis_code # *(Analyze and plot data. All figures from the articles have been generated from this code.)*
-│   │   ├── alfabet_lowest_bde_bdfe_plots.py
-│   │   ├── alkane_stab_score_data_plots.py
-│   │   ├── expt_small_molecule_data_plots.py
-│   │   ├── rmg_active_iters_data_plots.py
-│   │   └── smi_list_chord_plots.py
-│   ├── ml_code
+│   ├── data_ops_analysis_code  # (Analyze and plot data. All figures from the articles have been generated from this code.)
+│   │   ├── alfabet_lowest_bde_bdfe_plots.py  # (Plot results for ALFABET model.)
+│   │   ├── alkane_stab_score_data_plots.py  # (Plot results for alkane stability score model.)
+│   │   ├── expt_small_molecule_data_plots.py  # (Plot HA & deg temp distibution for the experimental small molecule data.)
+│   │   ├── rmg_active_iters_data_plots.py  # (Plot results for stability score models from actively learned literature kinetics.)
+│   │   └── smi_list_chord_plots.py  # (Plot the connectivity chord diagrams)
+│   ├── ml_code  # (Train stability score models and/or generate all the results.)
 │   │   ├── ml_utils.py
 │   │   ├── predict_alfabet_lowest_bde_bdfe.py
 │   │   ├── train_predict_alkane_stability_score_models.py
