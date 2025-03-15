@@ -1,0 +1,10 @@
+numpy
+matplotlib
+pandas
+tqdm (https://pypi.org/project/tqdm/)
+d3blocks (https://github.com/d3blocks/d3blocks)
+rdkit (https://www.rdkit.org/docs/Install.html)
+pytorch (https://pytorch.org/get-started/locally/)
+scikit-learn (https://scikit-learn.org/stable/install.html)
+torchinfo (https://github.com/TylerYep/torchinfo)
+alfabet (https://github.com/NREL/alfabet)

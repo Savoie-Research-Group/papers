@@ -1,0 +1,54 @@
+#!/bin/bash -l
+
+#SBATCH -A standby
+#SBATCH -N 1
+#SBATCH -n <n_cores>
+#SBATCH -t 04:00:00
+#SBATCH -J 'rmg_<i>'
+#SBATCH -o 'rmg.out'
+#SBATCH -e 'rmg.err'
+
+# UPDATE ACCORDING TO YOUR QUEUE CONTROLLER. THIS IS FOR SLURM.
+
+echo Start Time is `date`
+
+cd $SLURM_SUBMIT_DIR
+
+source ~/.rmg_profile
+
+# SET UP RMG CONDA ENV ACCORDING TO RMG DOCS INSTRUCTIONS.
+conda activate rmg_env
+
+conda activate base
+
+conda activate rmg_env
+
+python-jl "<rmg_path>" -n <n_cores> "<input_file>"
+
+wait
+
+rm -rf chemkin
+
+rm -rf cantera
+
+rm -rf kinetics_database
+
+rm -rf pdep
+
+rm -rf plot
+
+rm -rf rms
+
+rm -rf seed
+
+rm -rf solver
+
+rm -rf species
+
+rm -rf *.html
+
+rm restart_from_seed.py
+
+rm statistics.xls
+
+echo End Time is `date`
