@@ -2,20 +2,16 @@
 
 This directory contains all the data, python scripts, pretrained models, and figures to reproduce the results from the article. DOI: [10.26434/chemrxiv-2025-4hlt8](https://doi.org/10.26434/chemrxiv-2025-4hlt8)
 
-
 ## Author(s)
 - Veerupaksh Singla | [GitHub](https://github.com/veerupaksh)
 - Brett M. Savoie (Corresponding Author) | [bsavoie2@nd.edu](mailto:bsavoie2@nd.edu) | [GitHub](https://github.com/Savoie-Research-Group)
-
 
 ## Installation
 To set up RMG, and the RMG Database, clone the corresponding GitHub Repositories and follow the instructions. a: [github.com/ReactionMechanismGenerator/RMG-Py](https://github.com/ReactionMechanismGenerator/RMG-Py). b: [github.com/ReactionMechanismGenerator/RMG-database](https://github.com/ReactionMechanismGenerator/RMG-database).
 
 It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and to [install `RDKit` via `Conda`](https://www.rdkit.org/docs/Install.html) rather than `PyPI`. Other python libraries used are listed in `python_requirements.txt` and may be installed through `PyPI`.
 
-
 ## Directory tree *(description in parenthesis)*
-
 ```bash
 .
 ├── code
