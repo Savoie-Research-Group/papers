@@ -9,10 +9,12 @@ This directory contains all the data, python scripts, pretrained models, and fig
 
 
 ## Installation
-To set up RMG-Py, and the RMG-Py Database, clone the corresponding GitHub Repositories and follow the instructions: a. [github.com/ReactionMechanismGenerator/RMG-Py](https://github.com/ReactionMechanismGenerator/RMG-Py). b. [github.com/ReactionMechanismGenerator/RMG-database](https://github.com/ReactionMechanismGenerator/RMG-database).
+To set up RMG, and the RMG Database, clone the corresponding GitHub Repositories and follow the instructions. RMG-Py: [github.com/ReactionMechanismGenerator/RMG-Py](https://github.com/ReactionMechanismGenerator/RMG-Py). RMG-Py Database: [github.com/ReactionMechanismGenerator/RMG-database](https://github.com/ReactionMechanismGenerator/RMG-database).
+
+Other python libraries used are listed in `python_requirements.txt`. It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). It is recommended to [install `RDKit` through `Conda`](https://www.rdkit.org/docs/Install.html) instead of `PyPI`.
 
 
-## Directory tree description
+## Directory tree (description in parenthesis)
 
 ```bash
 .
