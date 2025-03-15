@@ -115,47 +115,47 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 │   │   └── preds_rmg_active_learning_iterations_models  # (Predictions for using the stability score models from actively learned literature kinetics.)
 │   │       ├── k_fold_smi_preds_dict_iteration_<j>.pkl  # (Predictions for all 10 folds using models trained on cummulative data generated through the j-th active iteration; j in range (0, 10).)
 │   │       └── k_fold_pairwise_accuracy_dict_iteration_<j>.json  # (Pairwise accuracy dicts for all the models trained above. j in range (0, 10).)
-│   ├── plots  # (All the plots in both the min text and the SI of the article.)
-│   │   ├── chord_plot_expt_small_molec_data.html
-│   │   ├── chord_plot_rmg_active_learning_data.html
-│   │   ├── expt_small_molec_distributions.pdf
-│   │   ├── expt_small_molec_ha_decomp_temp_histograms.pdf
-│   │   ├── polymer_category_accuracy_alfabet.pdf
-│   │   ├── polymer_category_k_fold_accuracy_alkane_stab_score_model.pdf
-│   │   ├── polymer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   │   ├── SI_dimer_category_accuracy_alfabet_bde.pdf
-│   │   ├── SI_dimer_category_accuracy_alfabet_bdfe.pdf
-│   │   ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│   │   ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│   │   ├── SI_dimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   │   ├── SI_small_molec_category_accuracy_alfabet_bde.pdf
-│   │   ├── SI_small_molec_category_accuracy_alfabet_bdfe.pdf
-│   │   ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│   │   ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│   │   ├── SI_small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   │   ├── SI_tetramer_category_accuracy_alfabet_bde.pdf
-│   │   ├── SI_tetramer_category_accuracy_alfabet_bdfe.pdf
-│   │   ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│   │   ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│   │   ├── SI_tetramer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   │   ├── SI_trimer_category_accuracy_alfabet_bde.pdf
-│   │   ├── SI_trimer_category_accuracy_alfabet_bdfe.pdf
-│   │   ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│   │   ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│   │   ├── SI_trimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   │   ├── small_molec_category_accuracy_alfabet.pdf
-│   │   ├── small_molec_category_k_fold_accuracy_alkane_stab_score_model.pdf
-│   │   └── small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│   └── rmg_active_learning_data  # (Data used for and generated during active sampling literature kinetics using RMG.)
-│       ├── active_iterations_smi_lists  # (Lists of SMILES of molecules sampled in each iteration. Iteration 0 was supplied manually to start the process.)
-│       │   └── iteration_<j>_smi_list.txt  # (j in range (0, 10).)
-│       ├── sampling_space_pubchem_chon_f_cl_max_15_ha_clean_acyclic.txt  # (Space of all molecule SMILES extracted from PubChem from which active sampling is done.)
-│       ├── sampled_smi_list.txt  # (List of SMILES of all the molecules sampled across all active iterations.)
-│       ├── sampled_smi_hl_dict.json  # (RMG half lives of all the molecules sampled across all active iterations.)
-│       └── trained_models_active_iterations_cummulative  # (10-fold stability score models trained using cummulative data sampled across all iterations.)
-│           └── iteration_<j>  # (Final state dicts of all 10-fold trained models using cummulative data through iteration j; j in range (0, 10).)
-│               ├── model_fold_<i>_best_state_dict.pth  # (final trained model state dict checkpoints for 10 folds, i.e. i in range (0, 10).)
-│               └── model_fold_<i>_info.json  # (final trained model info for 10 folds, i.e. i in range (0, 10).)
+│   ├── rmg_active_learning_data  # (Data used for and generated during active sampling literature kinetics using RMG.)
+│   │   ├── active_iterations_smi_lists  # (Lists of SMILES of molecules sampled in each iteration. Iteration 0 was supplied manually to start the process.)
+│   │   │   └── iteration_<j>_smi_list.txt  # (j in range (0, 10).)
+│   │   ├── sampling_space_pubchem_chon_f_cl_max_15_ha_clean_acyclic.txt  # (Space of all molecule SMILES extracted from PubChem from which active sampling is done.)
+│   │   ├── sampled_smi_list.txt  # (List of SMILES of all the molecules sampled across all active iterations.)
+│   │   ├── sampled_smi_hl_dict.json  # (RMG half lives of all the molecules sampled across all active iterations.)
+│   │   └── trained_models_active_iterations_cummulative  # (10-fold stability score models trained using cummulative data sampled across all iterations.)
+│   │       └── iteration_<j>  # (Final state dicts of all 10-fold trained models using cummulative data through iteration j; j in range (0, 10).)
+│   │           ├── model_fold_<i>_best_state_dict.pth  # (final trained model state dict checkpoints for 10 folds, i.e. i in range (0, 10).)
+│   │           └── model_fold_<i>_info.json  # (final trained model info for 10 folds, i.e. i in range (0, 10).)
+│   └── plots  # (All the plots in both the min text and the SI of the article.)
+│       ├── chord_plot_expt_small_molec_data.html
+│       ├── chord_plot_rmg_active_learning_data.html
+│       ├── expt_small_molec_distributions.pdf
+│       ├── expt_small_molec_ha_decomp_temp_histograms.pdf
+│       ├── polymer_category_accuracy_alfabet.pdf
+│       ├── polymer_category_k_fold_accuracy_alkane_stab_score_model.pdf
+│       ├── polymer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
+│       ├── SI_dimer_category_accuracy_alfabet_bde.pdf
+│       ├── SI_dimer_category_accuracy_alfabet_bdfe.pdf
+│       ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
+│       ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
+│       ├── SI_dimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
+│       ├── SI_small_molec_category_accuracy_alfabet_bde.pdf
+│       ├── SI_small_molec_category_accuracy_alfabet_bdfe.pdf
+│       ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
+│       ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
+│       ├── SI_small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
+│       ├── SI_tetramer_category_accuracy_alfabet_bde.pdf
+│       ├── SI_tetramer_category_accuracy_alfabet_bdfe.pdf
+│       ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
+│       ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
+│       ├── SI_tetramer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
+│       ├── SI_trimer_category_accuracy_alfabet_bde.pdf
+│       ├── SI_trimer_category_accuracy_alfabet_bdfe.pdf
+│       ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
+│       ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
+│       ├── SI_trimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
+│       ├── small_molec_category_accuracy_alfabet.pdf
+│       ├── small_molec_category_k_fold_accuracy_alkane_stab_score_model.pdf
+│       └── small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
 ├── python_requirements.txt
 └── README.md
 ```
