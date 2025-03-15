@@ -1,6 +1,6 @@
 # More Bang for Your Bond: Small Molecule Kinetics as Predictors of Polymer Stability
 
-This directory contains all the data, python scripts, pretrained models, and figures to reproduce the results from the article: DOI: [10.26434/chemrxiv-2025-4hlt8](https://doi.org/10.26434/chemrxiv-2025-4hlt8)
+This directory contains all the data, python scripts, pretrained models, and figures to reproduce the results from the article. DOI: [10.26434/chemrxiv-2025-4hlt8](https://doi.org/10.26434/chemrxiv-2025-4hlt8)
 
 
 ## Author(s)
@@ -11,7 +11,7 @@ This directory contains all the data, python scripts, pretrained models, and fig
 ## Installation
 To set up RMG, and the RMG Database, clone the corresponding GitHub Repositories and follow the instructions. RMG-Py: [github.com/ReactionMechanismGenerator/RMG-Py](https://github.com/ReactionMechanismGenerator/RMG-Py). RMG-Py Database: [github.com/ReactionMechanismGenerator/RMG-database](https://github.com/ReactionMechanismGenerator/RMG-database).
 
-Other python libraries used are listed in `python_requirements.txt`. It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). It is recommended to [install `RDKit` through `Conda`](https://www.rdkit.org/docs/Install.html) instead of `PyPI`.
+It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and to [install `RDKit` via `Conda`](https://www.rdkit.org/docs/Install.html) rather than `PyPI`. Other python libraries used are listed in `python_requirements.txt` and may be installed through `PyPI`.
 
 
 ## Directory tree (description in parenthesis)
@@ -19,7 +19,7 @@ Other python libraries used are listed in `python_requirements.txt`. It is recom
 ```bash
 .
 ├── code
-│   ├── data_ops_analysis_code
+│   ├── data_ops_analysis_code (Analyze and plot data. All figures from the articles have been generated from this code.)
 │   │   ├── alfabet_lowest_bde_bdfe_plots.py
 │   │   ├── alkane_stab_score_data_plots.py
 │   │   ├── expt_small_molecule_data_plots.py
