@@ -19,7 +19,7 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 ```bash
 .
 ├── code
-│   ├── data_ops_analysis_code *(Analyze and plot data. All figures from the articles have been generated from this code.)*
+│   ├── data_ops_analysis_code # *(Analyze and plot data. All figures from the articles have been generated from this code.)*
 │   │   ├── alfabet_lowest_bde_bdfe_plots.py
 │   │   ├── alkane_stab_score_data_plots.py
 │   │   ├── expt_small_molecule_data_plots.py
