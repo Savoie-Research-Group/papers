@@ -26,41 +26,23 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 │   │   ├── rmg_active_iters_data_plots.py  # (Plot results for stability score models from actively learned literature kinetics.)
 │   │   └── smi_list_chord_plots.py  # (Plot the connectivity chord diagrams)
 │   ├── ml_code  # (Train stability score models and/or generate all the results.)
-│   │   ├── ml_utils.py
-│   │   ├── predict_alfabet_lowest_bde_bdfe.py
-│   │   ├── train_predict_alkane_stability_score_models.py
-│   │   └── train_predict_rmg_models.py
-│   └── rmg_acive_learning_data_gen_code
-│       ├── gen_rmg_hl_data_active_learn.py
-│       ├── gen_rmg_hl_input_from_template.py
-│       ├── job_submit_template_slurm.sub
-│       ├── read_rmg_logs.py
-│       ├── rmg_input_template.py
-│       └── submit_rmg_hl_jobs.py
+│   │   ├── ml_utils.py  # (Utility functions used across the codebase.)
+│   │   ├── predict_alfabet_lowest_bde_bdfe.py  # (Generate predictions using ALFABET and obtain accuracy results.)
+│   │   ├── train_predict_alkane_stability_score_models.py  # (Train alkane stability score models, generate predictions and obtain accuracy results.)
+│   │   └── train_predict_rmg_models.py  # (Train stability score models from actively learned literature kinetics, generate predictions and obtain accuracy results.)
+│   └── rmg_acive_learning_data_gen_code  # (Generate computational small molecule thermal degradation half life data using active learning and RMG.)
+│       ├── gen_rmg_hl_data_active_learn.py  # (Active sampling and RMG simulations to generate half life data. Automatically calls all other scripts in this directory.)
+│       ├── gen_rmg_hl_input_from_template.py  # (Generate RMG input files from RMG input template. May be used for standalone testing. Called automatically by gen_rmg_hl_data_active_learn.py)
+│       ├── job_submit_template_slurm.sub  # (Job submit template for SLURM. Modify for your cluster.)
+│       ├── read_rmg_logs.py  # (Parse RMG output log file to obtain half life data. Called by gen_rmg_hl_data_active_learn.py)
+│       ├── rmg_input_template.py  # (RMG inout template)
+│       └── submit_rmg_hl_jobs.py  # (Submit jobs using SLURM. Mofidy for your cluster. Called by gen_rmg_hl_data_active_learn.py)
 ├── data
-│   ├── alkane_stab_score_paper_data
-│   │   ├── alk_smi_hl_dict_secs_hl_prune_till_c17_32421_vals.json
-│   │   ├── trained_model_till_c15
-│   │   │   ├── model_fold_0_best_state_dict.pth
-│   │   │   ├── model_fold_0_info.json
-│   │   │   ├── model_fold_1_best_state_dict.pth
-│   │   │   ├── model_fold_1_info.json
-│   │   │   ├── model_fold_2_best_state_dict.pth
-│   │   │   ├── model_fold_2_info.json
-│   │   │   ├── model_fold_3_best_state_dict.pth
-│   │   │   ├── model_fold_3_info.json
-│   │   │   ├── model_fold_4_best_state_dict.pth
-│   │   │   ├── model_fold_4_info.json
-│   │   │   ├── model_fold_5_best_state_dict.pth
-│   │   │   ├── model_fold_5_info.json
-│   │   │   ├── model_fold_6_best_state_dict.pth
-│   │   │   ├── model_fold_6_info.json
-│   │   │   ├── model_fold_7_best_state_dict.pth
-│   │   │   ├── model_fold_7_info.json
-│   │   │   ├── model_fold_8_best_state_dict.pth
-│   │   │   ├── model_fold_8_info.json
-│   │   │   ├── model_fold_9_best_state_dict.pth
-│   │   │   └── model_fold_9_info.json
+│   ├── alkane_stab_score_paper_data  # (alkane stability score pretrained models and predicted data.)
+│   │   ├── alk_smi_hl_dict_secs_hl_prune_till_c17_32421_vals.json  # (pyrolysis half life data (in seconds) for alkanes pulled from doi: 10.1039/D4DD00036F)
+│   │   ├── trained_model_till_c15  # (final state dicts of models trained using alkanes with upto 15 HA.)
+│   │   │   ├── model_fold_<i>_best_state_dict.pth  # (final trained model state dict checkpoint for 10 folds, i.e. i in range (0, 10))
+│   │   │   ├── model_fold_<i>_info.json  # (final trained model info for 10 folds, i.e. i in range (0, 10))
 │   │   └── trained_model_till_c17
 │   │       ├── model_fold_0_best_state_dict.pth
 │   │       ├── model_fold_0_info.json
