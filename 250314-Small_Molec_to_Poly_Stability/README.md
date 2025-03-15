@@ -125,7 +125,7 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 │   │       └── iteration_<j>  # (Final state dicts of all 10-fold trained models using cummulative data through iteration j; j in range (0, 10).)
 │   │           ├── model_fold_<i>_best_state_dict.pth  # (final trained model state dict checkpoints for 10 folds, i.e. i in range (0, 10).)
 │   │           └── model_fold_<i>_info.json  # (final trained model info for 10 folds, i.e. i in range (0, 10).)
-│   └── plots  # (All the plots in both the min text and the SI of the article.)
+│   └── plots  # (All the plots in both the main text and the SI of the article.)
 ├── python_requirements.txt
 └── README.md
 ```
