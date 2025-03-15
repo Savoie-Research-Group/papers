@@ -126,36 +126,6 @@ It is recommended to use a [`Conda` environment](https://docs.conda.io/projects/
 │   │           ├── model_fold_<i>_best_state_dict.pth  # (final trained model state dict checkpoints for 10 folds, i.e. i in range (0, 10).)
 │   │           └── model_fold_<i>_info.json  # (final trained model info for 10 folds, i.e. i in range (0, 10).)
 │   └── plots  # (All the plots in both the min text and the SI of the article.)
-│       ├── chord_plot_expt_small_molec_data.html
-│       ├── chord_plot_rmg_active_learning_data.html
-│       ├── expt_small_molec_distributions.pdf
-│       ├── expt_small_molec_ha_decomp_temp_histograms.pdf
-│       ├── polymer_category_accuracy_alfabet.pdf
-│       ├── polymer_category_k_fold_accuracy_alkane_stab_score_model.pdf
-│       ├── polymer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│       ├── SI_dimer_category_accuracy_alfabet_bde.pdf
-│       ├── SI_dimer_category_accuracy_alfabet_bdfe.pdf
-│       ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│       ├── SI_dimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│       ├── SI_dimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│       ├── SI_small_molec_category_accuracy_alfabet_bde.pdf
-│       ├── SI_small_molec_category_accuracy_alfabet_bdfe.pdf
-│       ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│       ├── SI_small_molec_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│       ├── SI_small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│       ├── SI_tetramer_category_accuracy_alfabet_bde.pdf
-│       ├── SI_tetramer_category_accuracy_alfabet_bdfe.pdf
-│       ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│       ├── SI_tetramer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│       ├── SI_tetramer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│       ├── SI_trimer_category_accuracy_alfabet_bde.pdf
-│       ├── SI_trimer_category_accuracy_alfabet_bdfe.pdf
-│       ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c15.pdf
-│       ├── SI_trimer_category_k_fold_accuracy_alkane_stab_score_model_till_c17.pdf
-│       ├── SI_trimer_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
-│       ├── small_molec_category_accuracy_alfabet.pdf
-│       ├── small_molec_category_k_fold_accuracy_alkane_stab_score_model.pdf
-│       └── small_molec_category_k_fold_accuracy_rmg_active_learning_iterations_models.pdf
 ├── python_requirements.txt
 └── README.md
 ```
