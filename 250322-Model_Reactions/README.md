@@ -3,9 +3,8 @@
 This directory contains data to reproduce main text result figures from the article. DOI: [10.26434/chemrxiv-2025-pp3xl](https://doi.org/10.26434/chemrxiv-2025-pp3xl)
 
 ## Author(s)
-
-- Veerupaksh Singla | [GitHub](https://github.com/veerupaksh)
 - Qiyuan Zhao | [GitHub](https://github.com/zhaoqy1996)
+- Veerupaksh Singla | [GitHub](https://github.com/veerupaksh)
 - Hsuan-Hao Hsu
 - Brett M. Savoie (Corresponding Author) | [bsavoie2@nd.edu](mailto:bsavoie2@nd.edu) | [GitHub](https://github.com/Savoie-Research-Group)
 
