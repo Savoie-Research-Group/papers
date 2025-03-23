@@ -15,13 +15,13 @@ This directory contains data to reproduce main text result figures from the arti
 ├── fig1
 │   ├── IRC_xyz  # (List of IRC xyz images)
 │   ├── React_Prod_TS_xyz  # (List of Reactant, Product, and DFT optimized TS xyz (in that order))
-│   └── report.csv  # (Gibbs energies of activations)
+│   └── DA_barrier.csv  # (Gibbs energies of activations)
 ├── fig3
 │   ├── actual_reaction_React_Prod_TS_xyz  # (List of Reactant, Product, and DFT optimized TS xyz (in that order) for actual reaction)
 │   ├── model_reaction_React_Prod_TS_xyz  # (List of Reactant, Product, and DFT optimized TS xyz (in that order) for model reaction)
 │   └── YARP2_benchmark.csv  # (Gibbs energies of activations of actual reactions and their corresponding model reactions)
 ├── fig4
-│   ├── energies.txt  # (Gibbs energies of activations for all reactions across all sampling schemes)
+│   ├── different_scheme_results.txt  # (Gibbs energies of activations for all reactions across all sampling schemes)
 │   ├── React_Prod_xyz  # (List of Reactant and Product xyz (in that order))
 │   ├── sampling1_TS_xyz  # (DFT optimized TS xyz for sampling scheme 1)
 │   ├── sampling2_TS_xyz  # (DFT optimized TS xyz for sampling scheme 2)
@@ -35,8 +35,7 @@ This directory contains data to reproduce main text result figures from the arti
 │   │   ├── smiles_list.txt  # (Concatenated list of alkanes and radicals)
 │   │   └── TCIT_Hf.json  # (reaction energies obtained from TCIT)
 │   ├── MR_IRC_xyz  # (List of IRC xyz images for model reactions)
-│   ├── MR_React_Prod_xyz  # (List of Reactant and Product xyz (in that order) for model reactions)
-│   ├── MR_TS_xyz  # (DFT optimized TS xyz for model reactions)
-│   └── report.csv  # (Gibbs energies of activations for model reactions)
+│   ├── MR_React_Prod_TS_xyz  # (List of Reactant, Product, and DFT optimized TS xyz (in that order) for model reactions)
+│   └── model_reaction_barriers.csv  # (Gibbs energies of activations for model reactions)
 └── README.md
 ```
