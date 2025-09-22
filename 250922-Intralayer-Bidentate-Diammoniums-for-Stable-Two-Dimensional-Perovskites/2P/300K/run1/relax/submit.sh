@@ -17,9 +17,9 @@ echo Running on host `hostname`
 echo Time is `date`
 t_start=$SECONDS
 
-# Submiting LAMMPS job for plumed.in.init
+# Submiting LAMMPS job for eval.in.init
 cd .
-mpirun -np $SLURM_NTASKS lmp -in plumed.in.init >> BPEA_steer.log &
+mpirun -np $SLURM_NTASKS lmp -in eval.in.init >> BPEA_MD_relax.log &
 wait
 
 t_end=$SECONDS
