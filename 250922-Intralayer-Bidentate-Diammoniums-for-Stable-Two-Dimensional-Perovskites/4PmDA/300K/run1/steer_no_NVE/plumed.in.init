@@ -1,0 +1,110 @@
+# LAMMPS input file for perovskite
+
+# VARIABLES
+variable        data_name       index   relaxed.0.data
+variable        restart_name    index   extend.end.restart
+variable        extend_name     index   extend.end.data
+variable        settings_name   index   2layers_prelim_4P_PbI4_charge_corrected.in.settings
+variable        nSteps_steer      index   1000000
+variable        avg_freq        index   1000
+variable        coords_freq     index   1000
+variable        thermo_freq     index   1000
+variable        dump4avg        index   1
+variable        Temp            index   300
+variable        pressure        index   1.0
+variable        run             index   0
+
+# Change the name of the log output #
+log ${run}.eval.log
+
+#===========================================================
+# GENERAL PROCEDURES
+#===========================================================
+units		real   # g/mol, angstroms, fs, kcal/mol, K, atm, charge*angstrom
+dimension	3      # 3 dimensional simulation
+newton		off 	# use Newton's 3rd law
+boundary	p p p	# periodic boundary conditions
+atom_style	full	# molecular + charge
+
+#===========================================================
+# DEFINE PAIR, BOND, AND ANGLE STYLES
+#===========================================================
+special_bonds   amber
+pair_style      hybrid buck/coul/long 15.0 15.0 lj/cut/coul/long 15.0 15.0
+pair_modify     shift yes mix arithmetic       # using Lorenz-Berthelot mixing rules
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+kspace_style    pppm 0.0001
+
+#===========================================================
+# SETUP SIMULATIONS
+#===========================================================
+
+# READ IN COEFFICIENTS/COORDINATES/TOPOLOGY
+if "${run} == 0" then &
+   "read_data ${data_name}" &
+else &
+   "read_restart ${restart_name}"
+include ${settings_name}
+
+# SET RUN PARAMETERS
+timestep	1.0		# fs
+run_style	verlet 		# Velocity-Verlet integrator
+neigh_modify every 1 delay 10 check yes one 10000
+
+# SET OUTPUTS
+thermo_style    custom step temp vol density etotal pe ebond eangle edihed ecoul elong evdwl enthalpy press
+thermo_modify   format float %14.6f
+thermo ${thermo_freq}
+
+# DECLARE RELEVANT OUTPUT VARIABLES
+variable        my_step equal   step
+variable        my_temp equal   temp
+variable        my_rho  equal   density
+variable        my_pe   equal   pe
+variable        my_ebon equal   ebond
+variable        my_eang equal   eangle
+variable        my_edih equal   edihed
+variable        my_evdw equal   evdwl
+variable        my_eel  equal   (ecoul+elong)
+variable        my_ent  equal   enthalpy
+variable        my_P    equal   press
+variable        my_vol  equal   vol
+
+fix averages all ave/time ${dump4avg} $(v_avg_freq/v_dump4avg) ${avg_freq} v_my_temp v_my_rho v_my_vol v_my_pe v_my_edih v_my_evdw v_my_eel v_my_ent v_my_P file ${run}.thermo.avg
+
+#===========================================================
+# RUN SMD
+#===========================================================
+
+# Set tether fix
+group tethered_atoms id 1 2 3 4 5 139 140 141 142 143 277 278 279 280 281 415 416 417 418 419 553 554 555 556 557 625 626 627 628 629 697 698 699 700 701 769 770 771 772 773 841 842 843 844 845 979 980 981 982 983 1117 1118 1119 1120 1121 1255 1256 1257 1258 1259 1393 1394 1395 1396 1397 1465 1466 1467 1468 1469 1537 1538 1539 1540 1541 1609 1610 1611 1612 1613 1681 1682 1683 1684 1685 1819 1820 1821 1822 1823 1957 1958 1959 1960 1961 2095 2096 2097 2098 2099 2233 2234 2235 2236 2237 2305 2306 2307 2308 2309 2377 2378 2379 2380 2381 2449 2450 2451 2452 2453 2521 2522 2523 2524 2525 2659 2660 2661 2662 2663 2797 2798 2799 2800 2801 2935 2936 2937 2938 2939 3073 3074 3075 3076 3077 3145 3146 3147 3148 3149 3217 3218 3219 3220 3221 3289 3290 3291 3292 3293
+fix tether_atoms tethered_atoms spring/self 100.0 xyz
+
+# UPDATE RUN PARAMETERS AND CREATE FIX
+fix mom all momentum 1000 linear 1 1 1 angular # Zero out system linear and angular momentum every ps 
+
+# NVT run
+fix steer all plumed plumedfile plumed.dat outfile p.log  #Read SMD setting file 
+fix equil all nvt temp ${Temp} ${Temp} 100.0 # NVT, nose-hoover 100 fs T relaxation
+
+# CREATE COORDINATE DUMPS FOR EQUILIBRIUM
+dump equil all custom ${coords_freq} plumed.${run}.nvt.lammpstrj id type x y z 
+dump_modify equil sort  id
+
+# RUN NVT
+run		${nSteps_steer}
+unfix equil
+undump equil
+
+# WRITE RESTART FILES, CLEANUP, AND EXIT
+write_restart   extend.end.restart
+write_data      extend.end.data pair ii
+unfix           averages
+unfix           tether_atoms
+
+# Update run number
+variable sub equal (v_run+1)
+shell sed -i /variable.*run.*index/s/${run}/${sub}/g 300K/run1/steer_no_NVE/plumed.in.init
+shell echo "Run ${run} finished." >> ${run}.success
