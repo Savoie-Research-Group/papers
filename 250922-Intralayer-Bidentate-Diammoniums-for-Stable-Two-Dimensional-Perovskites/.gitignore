@@ -1,0 +1,16 @@
+cat > users/zhichen_nian/.gitignore << 'EOF'
+*.log
+*.tmp
+*.out
+*.bak
+__pycache__/
+.ipynb_checkpoints/
+
+# results from simulations or analyses
+*.traj
+*.npy
+*.npz
+*.pt
+*.ckpt
+
+EOF
