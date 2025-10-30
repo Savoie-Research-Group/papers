@@ -1,0 +1,4 @@
+group surface-heads id 5 27 49 71 150 181 212 243 265 287 309 331 410 441 472 503 525 547 569 591 670 701 732 763 785 807 829 851 930 961 992 1023
+fix tether surface-heads spring/self 10.0
+
+unfix		tether
