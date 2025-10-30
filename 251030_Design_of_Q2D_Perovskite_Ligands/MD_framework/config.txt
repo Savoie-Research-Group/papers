@@ -1,0 +1,8 @@
+# MD SIMULATION RESOURCES
+JOB_MD_PPN              128
+JOB_MD_NODES            1
+JOB_MD_WALLTIME         4                                                                             # Hours
+JOB_MD_QUEUE            standby
+
+# Executable and scripts paths
+LAMMPS_PATH             /depot/bsavoie/apps/lammps_bell/bin/lmp                                  

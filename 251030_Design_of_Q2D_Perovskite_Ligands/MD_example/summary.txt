@@ -1,0 +1,3 @@
+summary of the stability of the system
+directory                                                                                            bond_lqe             angle_var            drifting_halides     m_x_m               
+NH3_1C_Angew-1+H_minimized_optimized                                                                 1.00159              24.22990             0.00000              7.82518             

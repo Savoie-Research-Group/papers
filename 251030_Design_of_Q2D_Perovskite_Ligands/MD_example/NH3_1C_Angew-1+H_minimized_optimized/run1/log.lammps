@@ -1,0 +1,24 @@
+LAMMPS (23 Jun 2022)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+# LAMMPS input file for perovskite
+
+# VARIABLES
+variable        data_name       index   NH3_1C_Angew-1+H_minimized_optimized.data
+variable        restart_name    index   extend.end.restart
+variable        extend_name     index   extend.end.data
+variable        settings_name   index   NH3_1C_Angew-1+H_minimized_optimized.in.settings
+variable        nSteps_NPT      index   100000
+variable        nSteps_NVT      index   100000
+variable        avg_freq        index   1000
+variable        coords_freq     index   1000
+variable        thermo_freq     index   1000
+variable        dump4avg        index   1
+variable        Temp            index   298.0
+variable        pressure        index   1.0
+variable        vseed1          index   10009
+variable        run             index   0
+
+# Change the name of the log output #
+log ${run}.eval.log
+log 0.eval.log
