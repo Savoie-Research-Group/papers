@@ -1,0 +1,339 @@
+import os, sys, shutil, math, argparse, subprocess
+import openbabel
+from openbabel import pybel
+from copy import deepcopy
+from rdkit import Chem
+from rdkit.Chem import Draw
+
+class Tee(object):
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+def main(*args):
+    print("python " + "  ".join(sys.argv))
+    print("-" * 80 + '\n')
+    sys.stdout = Tee(sys.stdout, open('generate_dimer_ligands.log', 'w'))
+    
+    # 16 functional groups, rearranged to match the ordering from previous data
+    fg_candidates = [
+       "[Na]C1=CC=C([Cs])C=C1[K]",
+       "[Na]C1=C([K])C=C([Cs])O1",
+       "[Na]C1=C([K])C=C([Cs])S1",
+       "[Na]C1=NC([K])=C([Cs])S1",
+       "[Na]C1=NC([K])=C([Cs])N1",
+       "[Cs]C1=NC=C([Na])C([K])=C1",
+       "[Cs]C1=C([K])N=C([Na])O1",
+       "[Na]C1=C([K])C(SC([Cs])=C2)=C2S1",
+       "[Na]C1=C([K])C(C=C([Cs])S2)=C2S1",
+       "[Na]C1=C([K])C=C([Cs])C2=NSN=C21",
+       "[Cs]C1=CC(C([K])C2=C3C=CC([Na])=C2)=C3C=C1",
+       "[Na]C1=CC(C=C(OC([Cs])=C2)C2=C3[K])=C3O1",
+       "[Na]C1=CC(C=C(SC([Cs])=C2)C2=C3[K])=C3S1",
+       "[Cs]C1=CC2=C(C(C=C(C([K])C3=C4SC([Na])=C3)C4=C5)=C5C2)S1",
+       "O=C(NC([Na])=C12)C1=C([Cs])NC2=O",
+       "O=C(N1)C2=C([Na])SC([Cs])=C2C1=O"
+    ]
+
+    # Add K atom to the last two functional groups
+    fg_candidates[-2] = "O=C(NC([Na])=C12)C1=C([Cs])N([K])C2=O" 
+    fg_candidates[-1] = "O=C(N1([K]))C2=C([Na])SC([Cs])=C2C1=O"
+    
+    # Reorder functional groups
+    mask_fg = [0, 1, 2, 7, 8, 15, 14, 9, 11, 12, 13, 10, 5, 6, 3, 4]
+    fg_candidates = [fg_candidates[i] for i in mask_fg]
+    
+    print("Functional groups (16 total):")
+    for i, fg in enumerate(fg_candidates):
+        print(f"  {i+1}: {fg}")
+    print()
+    
+    fg_common_name = [1, 2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18]
+    
+    # Anchor groups
+    anchor_common_name = ["1C", "2C", "2C-O", "3C-O", "3C-conj", "3C"]
+    anchor_candidates = ["[NH3+]C[*]", "[NH3+]CC[*]", "[NH3+]CCC[*]", 
+                        "[NH3+]C/C=C/[*]", "[NH3+]CCO[*]", "[NH3+]CCCO[*]"]
+    
+    # Reorder anchors
+    mask_anchor = [0, 1, 4, 5, 3, 2]
+    anchor_candidates = [anchor_candidates[i] for i in mask_anchor]
+    
+    print("Anchors (6 total):")
+    for i, (name, smiles) in enumerate(zip(anchor_common_name, anchor_candidates)):
+        print(f"  {name}: {smiles}")
+    print()
+    
+    # Create output directory
+    output_dir = "dimer_ligands_generated"
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print(f"Created output directory: {output_dir}")
+    else:
+        print(f"Output directory already exists: {output_dir}")
+    print()
+    
+    # Calculate total number of ligands (anchor + A + B, no side chains)
+    total_ligands = len(anchor_candidates) * len(fg_candidates) * len(fg_candidates)
+    print(f"Total dimer ligands to generate: {total_ligands}")
+    print(f"  = {len(anchor_candidates)} anchors × {len(fg_candidates)} FG_A × {len(fg_candidates)} FG_B")
+    print("-" * 80 + '\n')
+    
+    # Counter for generated ligands
+    count = 0
+    failed = 0
+    skipped = 0
+    
+    # Iterate through all combinations
+    for anchor_idx, (anchor_name, anchor_smiles) in enumerate(zip(anchor_common_name, anchor_candidates)):
+        print(f"\n{'='*80}")
+        print(f"Processing anchor: {anchor_name} ({anchor_idx+1}/{len(anchor_candidates)})")
+        print(f"{'='*80}\n")
+        
+        # Create subdirectory for this anchor
+        anchor_dir = os.path.join(output_dir, f"{anchor_name}_ready")
+        if not os.path.exists(anchor_dir):
+            os.makedirs(anchor_dir)
+        
+        for fg_A_idx, fg_A_name in enumerate(fg_common_name):
+            fg_A_smiles = fg_candidates[fg_A_idx]
+            
+            for fg_B_idx, fg_B_name in enumerate(fg_common_name):
+                fg_B_smiles = fg_candidates[fg_B_idx]
+                
+                # Generate ligand name (dimer: anchor + A + B, no side chain)
+                ligand_name = f"NH3_{anchor_name}_Angew-{fg_A_name}+H-Angew-{fg_B_name}_minimized.xyz"
+                ligand_path = os.path.join(anchor_dir, ligand_name)
+                
+                # Skip if already exists
+                if os.path.exists(ligand_path):
+                    count += 1
+                    skipped += 1
+                    if count % 100 == 0:
+                        print(f"Progress: {count}/{total_ligands} ({100*count/total_ligands:.1f}%) - Skipped (already exists): {ligand_name}")
+                    continue
+                
+                try:
+                    # Combine molecules (anchor + ligand A + ligand B)
+                    temp_mol, temp_mol_smi = _combine_dimer(
+                        Chem.MolFromSmiles(anchor_smiles),
+                        Chem.MolFromSmiles(fg_A_smiles),
+                        Chem.MolFromSmiles(fg_B_smiles)
+                    )
+                    
+                    # Convert to XYZ with optimization
+                    smi2xyz(temp_mol_smi, ligand_path, opt_option=True)
+                    
+                    count += 1
+                    if count % 100 == 0:
+                        print(f"Progress: {count}/{total_ligands} ({100*count/total_ligands:.1f}%) - Generated: {ligand_name}")
+                
+                except Exception as e:
+                    failed += 1
+                    count += 1
+                    print(f"ERROR: Failed to generate {ligand_name}")
+                    print(f"       {str(e)}")
+                    continue
+        # test break, only process 100 ligands
+        if count > 100:
+            print("Test break: processed over 100 ligands, exiting early.")
+            break
+    
+    print("\n" + "="*80)
+    print("DIMER GENERATION COMPLETE")
+    print("="*80)
+    print(f"Total ligands attempted: {total_ligands}")
+    print(f"Successfully generated: {count - failed - skipped}")
+    print(f"Skipped (already exist): {skipped}")
+    print(f"Failed: {failed}")
+    print("="*80)
+    
+    return 
+
+
+def _combine_dimer(anchor, ligand_A, ligand_B):
+    """
+    Combine anchor and two functional groups (ligand_A, ligand_B) to form a dimer ligand.
+    Structure: anchor-A-B (no side chains)
+    
+    Uses marker atoms:
+    - Na (11): connection points on functional groups
+    - K (19): side chain attachment points (will be removed)
+    - Cs (55): anchor attachment points
+    - * (0): wildcard attachment points on anchor
+    """
+    
+    # Step 1: Clean ligand A - remove K (side chain marker)
+    clean_ligand_A = Chem.RWMol(ligand_A)
+    for at in ligand_A.GetAtoms():
+        if at.GetAtomicNum() == 19:  # K
+            clean_ligand_A.RemoveAtom(at.GetIdx())
+            break
+    
+    product = Chem.RWMol(clean_ligand_A)
+    
+    # Step 2: Add anchor to the product
+    # Find attachment point on anchor (*)
+    attach_idx = None
+    rgroup = Chem.RWMol(anchor)
+    
+    for rg_at in rgroup.GetAtoms():
+        if rg_at.GetAtomicNum() == 0:  # *
+            attach_idx = rg_at.GetNeighbors()[0].GetIdx()
+            if rg_at.GetIdx() < attach_idx:
+                attach_idx -= 1
+            rgroup.RemoveAtom(rg_at.GetIdx())
+            break
+    
+    if attach_idx is None:
+        raise ValueError("Invalid anchor: no attachment point found")
+    
+    # Connect anchor to ligand A (via Cs)
+    prev_atom_count = product.GetNumAtoms()
+    product = Chem.RWMol(Chem.CombineMols(product, rgroup))
+    
+    product_ori = deepcopy(product)
+    for at in product_ori.GetAtoms():
+        if at.GetAtomicNum() == 55:  # Cs
+            product.AddBond(at.GetNeighbors()[0].GetIdx(), attach_idx + prev_atom_count)
+            product.RemoveAtom(at.GetIdx())
+            break
+    
+    # Step 3: Attach ligand B (via Na on ligand A)
+    # First, remove K from ligand B if present
+    clean_ligand_B = Chem.RWMol(ligand_B)
+    for at in ligand_B.GetAtoms():
+        if at.GetAtomicNum() == 19:  # K
+            clean_ligand_B.RemoveAtom(at.GetIdx())
+            break
+    
+    product_ori = deepcopy(product)
+    for at in product_ori.GetAtoms():
+        if at.GetAtomicNum() == 11:  # Na
+            # Find attachment point on ligand B (Cs)
+            attach_idx = None
+            rgroup = Chem.RWMol(clean_ligand_B)
+            
+            for rg_at in rgroup.GetAtoms():
+                if rg_at.GetAtomicNum() == 55:  # Cs
+                    attach_idx = rg_at.GetNeighbors()[0].GetIdx()
+                    if rg_at.GetIdx() < attach_idx:
+                        attach_idx -= 1
+                    rgroup.RemoveAtom(rg_at.GetIdx())
+                    break
+            
+            if attach_idx is None:
+                raise ValueError("Invalid ligand_B: no attachment point found")
+            
+            prev_atom_count = product.GetNumAtoms()
+            product = Chem.RWMol(Chem.CombineMols(product, rgroup))
+            product.AddBond(at.GetNeighbors()[0].GetIdx(), attach_idx + prev_atom_count)
+            product.RemoveAtom(at.GetIdx())
+            break
+    
+    # Step 4: Remove remaining Na marker on ligand B if present
+    product_ori = deepcopy(product)
+    for at in product_ori.GetAtoms():
+        if at.GetAtomicNum() == 11:  # Na
+            product.RemoveAtom(at.GetIdx())
+            break
+    
+    # Convert to SMILES
+    product_smi = Chem.MolToSmiles(product)
+    product_smi = product_smi.replace('~', '-')
+    
+    return product, product_smi
+
+
+def smi2xyz(smiles, xyzname, opt_option=True):
+    """
+    Convert SMILES string to XYZ file.
+    
+    Args:
+        smiles: SMILES string representation of molecule
+        xyzname: output XYZ filename
+        opt_option: if True, perform geometry optimization
+    """
+    if opt_option:
+        # Read SMILES, add hydrogens, and minimize structure
+        mol = pybel.readstring("smi", smiles)
+        pybel._builder.Build(mol.OBMol)
+        mol.addh()
+        globalopt(mol)
+        
+        # Write XYZ file
+        xyz = pybel.Outputfile("xyz", xyzname, overwrite=True)
+        xyz.write(mol)
+        xyz.close()
+    else:
+        # Quick conversion without optimization
+        subprocess.call(f'obabel -:"{smiles}" -oxyz -O {xyzname} --gen3d', shell=True)
+    
+    return
+
+
+def globalopt(mol, debug=False, fast=False):
+    """
+    Perform UFF/MMFF94-based geometry optimization using OpenBabel.
+    
+    Args:
+        mol: pybel molecule object
+        debug: if True, output intermediate structures
+        fast: if True, use faster but less thorough optimization
+    """
+    # Initialize forcefield (prefer MMFF94, fallback to UFF)
+    ff = pybel._forcefields["mmff94"]
+    success = ff.Setup(mol.OBMol)
+    if not success:
+        ff = pybel._forcefields["uff"]
+        success = ff.Setup(mol.OBMol)
+        if not success:
+            raise RuntimeError("Cannot set up forcefield")
+    
+    if debug:
+        ff.GetCoordinates(mol.OBMol)
+        mol.write("sdf", "1.sdf", overwrite=True)
+    
+    # Initial structure minimization
+    if fast:
+        ff.SteepestDescent(50, 1.0e-3)
+    else:
+        ff.SteepestDescent(500, 1.0e-4)
+    
+    if debug:
+        ff.GetCoordinates(mol.OBMol)
+        mol.write("sdf", "2.sdf", overwrite=True)
+    
+    # Find lowest-energy conformer
+    if fast:
+        ff.WeightedRotorSearch(20, 5)
+    else:
+        ff.WeightedRotorSearch(100, 20)
+    
+    if debug:
+        ff.GetCoordinates(mol.OBMol)
+        mol.write("sdf", "3.sdf", overwrite=True)
+    
+    # Final minimization
+    if fast:
+        ff.ConjugateGradients(50, 1.0e-4)
+    else:
+        ff.ConjugateGradients(500, 1.0e-6)
+    
+    if debug:
+        ff.GetCoordinates(mol.OBMol)
+        mol.write("sdf", "4.sdf", overwrite=True)
+    
+    return
+
+
+if __name__ == "__main__":
+    main(*sys.argv[1:])
