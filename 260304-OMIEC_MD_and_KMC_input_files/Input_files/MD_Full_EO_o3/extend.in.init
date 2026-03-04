@@ -1,0 +1,108 @@
+# lammps input file for polymer simulation with dilute ions
+
+# VARIABLES
+variable        data_name       index   o3_wp.data
+variable        restart_name    index   o3_wp_npt.1.0.end.restart
+variable        settings_name   index   o3.in.settings
+variable        log_name        index   o3_wp.log
+variable        dt              index   10.0 # timestep
+variable        nSteps_relax    index   5000 # number of data steps for the rescaling box
+variable        nSteps_reshape  index   10000000 # number of data steps for the rescaling box
+variable        nSteps_anneal   index   10000000 # number of data steps for the rescaling box
+variable        nSteps_equil    index   10000000 # number of data steps for the rescaling box
+variable        nSteps_npt      index   5000000 # number of data steps for NPT
+variable        nSteps_nvt      index   5000000 # number of data steps for NVT
+variable        nSteps_extend   index   5000000 # number of data steps for the rescaling box
+variable        avg_freq        index   100
+variable        coords_freq     index   100
+variable        thermo_freq     index   100
+variable        dump4avg        index   10
+variable        vseed           index   88312 
+variable        ANNEAL_TEMP     index   300.0 # Temperature to start from in annealing
+variable        FINAL_TEMP      index   300.0 # Temperature ramped to during the final anneal
+variable        pressure        index   1.0 # Pressure during the simulations
+
+variable        run             index   3
+# Change the name of the log output #
+log ${log_name}
+
+#===========================================================
+# GENERAL PROCEDURES
+#===========================================================
+units		real	# g/mol, angstroms, fs, kcal/mol, K, atm, charge*angstrom
+dimension	3	# 3 dimensional simulation
+newton		on	# use Newton's 3rd law
+boundary	p p p	# periodic boundary conditions 
+atom_style	hybrid full ellipsoid   # molecular + charge
+dielectric	  2.5      # dielectric
+
+#===========================================================
+# FORCE FIELD DEFINITION
+#===========================================================
+special_bonds  lj   0.0 1.0 1.0  coul 0.0 0.0 0.0     # NO     1-4 LJ/COUL interactions
+pair_style         hybrid/overlay lj/gromacs/coul/gromacs 9.0 12.0 0.0 12.0 gayberne 1.0 1.0 1.0 12.0 # outer_LJ outer_Coul (cutoff values, see LAMMPS Doc)
+bond_style         hybrid elsp elel harmonic
+angle_style        hybrid cosine/squared
+dihedral_style     hybrid opls
+#===========================================================
+# SETUP SIMULATIONS
+#===========================================================
+
+# READ IN COEFFICIENTS/COORDINATES/TOPOLOGY
+variable prun equal (v_run-1)
+if "${run} == 1" then "read_restart ${restart_name}" else "read_restart ${prun}.end.restart"
+include ${settings_name}
+
+
+# SET RUN PARAMETERS
+timestep	10.0		# fs
+run_style	verlet 		# Velocity-Verlet integrator
+neigh_modify every 10 delay 0  # More relaxed rebuild criteria can be used
+
+# FIX RIGID WATER BONDS
+fix            mode_constraint all shake 0.0001 20 0 b 4 5 
+
+# SET QUATERNIONS COMPUTE FIX
+compute quaternions all property/atom quatw quati quatj quatk
+
+# THERMODYANMIC VARIABLES
+variable        my_step equal   step
+variable        my_rho  equal   density
+variable        my_vol  equal   vol
+
+#===========================================================
+# RUN EXTENSION
+#===========================================================
+
+# Set npt/nvt fix for the runs
+fix mom all momentum 1000 linear 1 1 1 angular # Zero out system linear and angular momentum every ps 
+fix tmp all npt/asphere temp ${FINAL_TEMP} ${FINAL_TEMP} $(15.0*dt) iso ${pressure} ${pressure} $(150.0*dt) # NPT, nose-hoover 100 timesteps T relaxation
+
+compute_modify tmp_temp extra/dof 123529
+
+variable rot_temp equal c_tmp_temp
+compute rot_press all pressure tmp_temp
+variable rot_press equal c_rot_press
+fix therm all print ${thermo_freq} "${my_step} ${my_rho} ${my_vol} ${rot_temp} ${rot_press}" file ${run}.thermo.avg screen "no" title "# Step Density Volume Temp Press"
+
+# Create coordinate dump
+dump equil all custom ${coords_freq} ${run}.sys.lammpstrj id mol type x y z c_quaternions[1] c_quaternions[2] c_quaternions[3] c_quaternions[4] mol 
+dump_modify equil sort  id
+
+restart 100000 restart_files/restart
+
+# Run equilibration segment
+run		${nSteps_extend}
+
+# Write restart files, cleanup, and exit
+write_restart   ${run}.end.restart
+write_data   ${run}.end.data pair ij
+
+# Reset dump and increment
+undump equil
+uncompute rot_press
+
+# Update run number
+variable sub equal (v_run+1)
+shell sed -i /variable.*run.*index/s/${run}/${sub}/g extend.in.init
+

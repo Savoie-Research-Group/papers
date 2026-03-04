@@ -1,0 +1,42 @@
+# Non-bonded interactions (pair-wise)
+pair_coeff	1    	1    	gayberne	1.0    3.0     0.25    0.25    1.20    0.25    0.25    1.20		#B-B
+pair_coeff	1    	2    	lj/gromacs/coul/gromacs		0.70 	4.70 		#B-SEO
+pair_coeff	1    	3    	lj/gromacs/coul/gromacs		0.61 	4.70 		#B-W
+pair_coeff	1    	4    	lj/gromacs/coul/gromacs		0.00 	0.00 		#B-WP
+pair_coeff	1    	5    	lj/gromacs/coul/gromacs		0.00 	0.00 		#B-WM
+pair_coeff	1    	6    	lj/gromacs/coul/gromacs		0.74 	5.35 		#B-Q
+pair_coeff	2    	2    	lj/gromacs/coul/gromacs		0.61 	4.30 		#SEO-SEO
+pair_coeff	2    	3    	lj/gromacs/coul/gromacs		0.79 	4.70 		#SEO-W
+pair_coeff	2    	4    	lj/gromacs/coul/gromacs		0.00 	0.00 		#SEO-WP
+pair_coeff	2    	5    	lj/gromacs/coul/gromacs		0.00 	0.00 		#SEO-WM
+pair_coeff	2    	6    	lj/gromacs/coul/gromacs		0.84 	5.35 		#SEO-Q
+pair_coeff	3    	3    	lj/gromacs/coul/gromacs		0.96 	4.70 		#W-W
+pair_coeff	3    	4    	lj/gromacs/coul/gromacs		0.00 	0.00 		#W-WP
+pair_coeff	3    	5    	lj/gromacs/coul/gromacs		0.00 	0.00 		#W-WM
+pair_coeff	3    	6    	lj/gromacs/coul/gromacs		1.19 	5.35 		#W-Q
+pair_coeff	4    	4    	lj/gromacs/coul/gromacs		0.00 	0.00 		#WP-WP
+pair_coeff	4    	5    	lj/gromacs/coul/gromacs		0.00 	0.00 		#WP-WM
+pair_coeff	4    	6    	lj/gromacs/coul/gromacs		0.00 	3.0  		#WP-Q
+pair_coeff	5    	5    	lj/gromacs/coul/gromacs		0.00 	0.00 		#WM-WM
+pair_coeff	5    	6    	lj/gromacs/coul/gromacs		0.00 	4.5  		#WM-Q
+pair_coeff	6    	6    	lj/gromacs/coul/gromacs		0.84 	6.0  		#Q-Q
+
+# Stretching interactions
+bond_coeff	1    	elel	25.0	4.3	7.5	90.0	7.5	90.0	0.0	2.0	0.0	0.0	#	more	rigid	bond,	less	rigid	dihedral	#B-B
+bond_coeff	2    	elsp	1.5	4.7	3.0	90.0	#B-SEO
+bond_coeff	3    	harmonic	8.35	3.22	#SEO-SEO
+bond_coeff	4    	harmonic	10000.0	1.4	#W-WP
+bond_coeff	5    	harmonic	10000.0	1.4	#W-WM
+
+# Bending interactions
+angle_coeff	1    	cosine/squared	3.0	90.0	#	more	rigid	#B-B-SEO
+angle_coeff	2    	cosine/squared	1.0	160.0	#B-B-B
+angle_coeff	3    	cosine/squared	3.0	180.0	#B-SEO-SEO
+angle_coeff	4    	cosine/squared	6.0	135.0	#SEO-SEO-SEO
+angle_coeff	5    	cosine/squared	0.5019	0.0	#WP-W-WM
+
+# Dihedral interactions
+dihedral_coeff	1    	opls	0.0	0.0	0.0	0.0	#B-B-SEO-SEO
+dihedral_coeff	2    	opls	0.0	0.0	0.0	0.0	#B-B-B-SEO
+dihedral_coeff	3    	opls	0.5	0.6	0.0	0.0	#	less	rigi	#B-B-B-B
+dihedral_coeff	4    	opls	0.0	0.0	0.0	0.0	#B-SEO-SEO-SEO
