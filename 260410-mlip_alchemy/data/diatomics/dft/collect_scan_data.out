@@ -1,0 +1,649 @@
+Starting analysis in: /temp180/bsavoie2/emille35/mlip_alchemy/diatomic_scan/orca_calculations
+
+--- Processing: Br_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+  INFO: Stored master bond distances from this job.
+--------------------------------------------------
+--- Processing: Br_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: Br_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Br_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Cl_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: Cl_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: Cl_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Cl_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: F_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: F_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: F_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: F_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: H_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: H_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: H_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: Job failed (not an SCF error). Skipping. ❌
+------------------------------------------------
+--- Processing: H_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: Job failed (not an SCF error). Skipping. ❌
+------------------------------------------------
+--- Processing: H_Br_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: H_Br_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: H_Br_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Br_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Br_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Br_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Cl_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: H_Cl_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: H_Cl_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Cl_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Cl_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_Cl_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_F_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_F_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_F_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_F_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_F_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_F_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_I_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_I_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: H_I_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_I_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_I_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: H_I_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: I_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: I_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: I_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: I_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: K_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: K_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+------------------------------------------------
+--- Processing: K_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 60 energy points. ⚡
+------------------------------------------------
+--- Processing: K_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 60 energy points. ⚡
+------------------------------------------------
+--- Processing: K_Br_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: K_Br_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: K_Br_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 66 energy points. ⚡
+---------------------------------------------------
+--- Processing: K_Br_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_Br_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_Br_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_Cl_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: K_Cl_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: K_Cl_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 66 energy points. ⚡
+---------------------------------------------------
+--- Processing: K_Cl_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 67 energy points. ⚡
+---------------------------------------------------
+--- Processing: K_Cl_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_Cl_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_F_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_F_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_F_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_F_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_F_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_F_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_I_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_I_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: K_I_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_I_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_I_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: K_I_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+--------------------------------------------------
+--- Processing: Li_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Li_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Li_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Li_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Li_Br_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Li_Br_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Li_Br_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Br_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Br_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Br_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Cl_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Li_Cl_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Li_Cl_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Cl_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Cl_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_Cl_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_F_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_F_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_F_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_F_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_F_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_F_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_I_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Li_I_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 64 energy points. ⚡
+----------------------------------------------------
+--- Processing: Li_I_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_I_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_I_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Li_I_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 72 energy points. ⚡
+-------------------------------------------------
+--- Processing: Na_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 41 energy points. ⚡
+-------------------------------------------------
+--- Processing: Na_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-------------------------------------------------
+--- Processing: Na_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination abnormal. (FAILED)
+  INFO: 'SCF NOT CONVERGED' detected. Attempting to salvage...
+  SALVAGED: Found 70 energy points. ⚡
+-------------------------------------------------
+--- Processing: Na_Br_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Na_Br_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Na_Br_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Br_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Br_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Br_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Cl_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Na_Cl_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+-----------------------------------------------------
+--- Processing: Na_Cl_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Cl_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Cl_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_Cl_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_F_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_F_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_F_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_F_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_F_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_F_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_I_-2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_I_-2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+----------------------------------------------------
+--- Processing: Na_I_0_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_I_0_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_I_2_1_RKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+--- Processing: Na_I_2_1_UKS_wB97M-V_def2-TZVPD ---
+  CHECK 1: Termination normal. (PASSED)
+  CHECK 2: Trajectory file is complete (75 points). (PASSED)
+  STATUS: Perfect job. Collecting data. 👍
+---------------------------------------------------
+
+--- Processing Complete ---
+Total jobs passed (perfect): 117
+Total jobs salvaged (partial): 9
+Total jobs failed/skipped: 2
+
+Successfully compiled all data into:
+/temp180/bsavoie2/emille35/mlip_alchemy/diatomic_scan/orca_calculations/dft_scan_energies.csv

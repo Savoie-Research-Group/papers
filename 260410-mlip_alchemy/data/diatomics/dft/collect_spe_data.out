@@ -1,0 +1,73 @@
+Starting analysis in: /temp180/bsavoie2/emille35/mlip_alchemy/diatomic_reference/orca_calculations
+
+--- Processing: Br_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -2574.116479053905 Hartree.
+------------------------------------------------
+--- Processing: Br_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -2573.968460298882 Hartree.
+---------------------------------------------
+--- Processing: Cl_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -460.198150092565 Hartree.
+------------------------------------------------
+--- Processing: Cl_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -460.126133264605 Hartree.
+---------------------------------------------
+--- Processing: F_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -99.784924717336 Hartree.
+-----------------------------------------------
+--- Processing: F_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -99.746494848145 Hartree.
+--------------------------------------------
+--- Processing: H_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -0.498644691899 Hartree.
+-----------------------------------------------
+--- Processing: H_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -0.494115103816 Hartree.
+--------------------------------------------
+--- Processing: I_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -297.76260762969 Hartree.
+-----------------------------------------------
+--- Processing: I_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -297.665191688521 Hartree.
+--------------------------------------------
+--- Processing: K_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -599.960376355287 Hartree.
+-----------------------------------------------
+--- Processing: K_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -599.879408366254 Hartree.
+--------------------------------------------
+--- Processing: Li_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -7.485425877575 Hartree.
+------------------------------------------------
+--- Processing: Li_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -7.472075156875 Hartree.
+---------------------------------------------
+--- Processing: Na_0_2_wB97M-D3BJ-def2-TZVPP ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -162.305494465629 Hartree.
+------------------------------------------------
+--- Processing: Na_0_2_wB97M-V-def2-TZVPD ---
+  CHECK: Termination normal. (PASSED)
+  ENERGY: Found -162.257170208602 Hartree.
+---------------------------------------------
+
+--- Processing Complete ---
+Jobs passed: 16
+Jobs failed/skipped: 0
+
+Successfully compiled all data into:
+/temp180/bsavoie2/emille35/mlip_alchemy/diatomic_reference/orca_calculations/atom_reference_spe.csv
