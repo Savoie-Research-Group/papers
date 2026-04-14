@@ -1,0 +1,11 @@
+! UKS wB97M-V def2-TZVPD Opt
+
+%geom
+   Scan
+      B 0 1 = 7.0, 0.5, 65
+   end
+end
+
+* xyzfile 0 1 /temp180/bsavoie2/emille35/mlip_alchemy/sn1_scans/ch3cl/ch3cl_7ang.xyz
+
+# Never forget your bonus line!!

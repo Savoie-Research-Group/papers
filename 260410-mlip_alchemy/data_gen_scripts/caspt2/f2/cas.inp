@@ -1,0 +1,22 @@
+! def2-TZVPD moread PAL8
+
+%moinp "/temp180/bsavoie2/emille35/mlip_alchemy/diatomic_scan/caspt2/f2/rhf/rhf.gbw"
+
+%casscf
+    nel = 2
+    norb = 2
+    mult = 1
+    nroots = 1
+    PTMethod FIC_CASPT2
+end
+
+%paras
+    R = 12.0, 0.8, 112 # start, end, n_steps
+end
+
+* xyz 0 1
+F 0 0 0
+F {R} 0 0
+*
+
+# Never forget your bonus lines!!!
