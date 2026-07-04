@@ -1,4 +1,4 @@
-# Actual Reaction Generation and Benchmarking from Model Reactions
+# Systematic Benchmarking Dataset Generation for Graphical Model Reaction Templates
 
 This directory contains data to reproduce main text result figures from the article. DOI: TBD on submission.
 
