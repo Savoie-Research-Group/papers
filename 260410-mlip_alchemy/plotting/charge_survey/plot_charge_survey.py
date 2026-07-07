@@ -83,12 +83,13 @@ def process_and_plot_bond_data(file_path):
         'UKS':      {'marker': '', 'linestyle': '-',  'markevery': 5},
         'AIMNET2':  {'marker': 'x', 'linestyle': ':', 'markevery': 5},
         'UMA': {'marker': 's', 'markersize': 4.0, 'linestyle': ':',  'markevery': 5},
-        'MACE':     {'marker': 'o', 'markersize': 4.0, 'linestyle': ':', 'markevery': 5}
+        'MACE-OMOL':     {'marker': 'o', 'markersize': 4.0, 'linestyle': ':', 'markevery': 5},
+        'MACE-POLAR':     {'marker': 'd', 'markersize': 4.0, 'linestyle': ':', 'markevery': 5}
         # 'MACE':     {'marker': 'o', 'linestyle': '', 'markevery': 5},
         # 'ORB':     {'marker': '<', 'linestyle': '',  'markevery': 5}
     }
 
-    fig, axes = plt.subplots(1, 3, figsize=(6.5, 4), sharey=True)
+    fig, axes = plt.subplots(1, 4, figsize=(6.5, 4), sharey=True)
 
     # --- Plot 1: UKS vs AIMNet2 ---
     ax1 = axes[0]
@@ -148,7 +149,7 @@ def process_and_plot_bond_data(file_path):
     #             fontsize=16, fontweight='bold', va='top', ha='right')
     ax2.grid(True, linestyle='--', alpha=0.7)
 
-    # --- Plot 3: UKS vs MACE ---
+    # --- Plot 3: UKS vs MACE-OMOL ---
     ax3 = axes[2]
     for charge in charges.keys():
         label = charges[charge]
@@ -165,8 +166,8 @@ def process_and_plot_bond_data(file_path):
         # Mace (looks for 'mace')
         mace_matches = [c for c in df.columns if 'mace' in c and charge in c]
         if mace_matches:
-            style = method_styles['MACE']
-            ax3.plot(df['r'], df[mace_matches[0]], label=f'MACE {label}', color=color, **style)
+            style = method_styles['MACE-OMOL']
+            ax3.plot(df['r'], df[mace_matches[0]], label=f'MACE-OMOL {label}', color=color, **style)
 
     ax3.set_xlabel('C -- Cl Distance (Å)')
     ax3.set_xlim(0.4, 7.0)
@@ -174,6 +175,33 @@ def process_and_plot_bond_data(file_path):
     # ax3.text(0.1, 0.99, f'C', transform=ax3.transAxes,
     #             fontsize=16, fontweight='bold', va='top', ha='right')
     ax3.grid(True, linestyle='--', alpha=0.7)
+
+    # --- Plot 4: UKS vs MACE-POLAR ---
+    ax4 = axes[3]
+    for charge in charges.keys():
+        label = charges[charge]
+        color = charge_colors.get(label, 'gray')
+
+        # Plot UKS
+        uks_matches = [c for c in uks_cols if charge in c]
+        if uks_matches:
+            col_name = uks_matches[0]
+            label = f'DFT {label}'
+            style = method_styles['UKS']
+            ax4.plot(df['r'], df[col_name], label=label, color=color, **style)
+
+        # MACE-pol (looks for 'polar')
+        pol_matches = [c for c in df.columns if 'polar' in c and charge in c]
+        if pol_matches:
+            style = method_styles['MACE-POLAR']
+            ax4.plot(df['r'], df[pol_matches[0]], label=f'MACE-POLAR {label}', color=color, **style)
+
+    ax4.set_xlabel('C -- Cl Distance (Å)')
+    ax4.set_xlim(0.4, 7.0)
+
+    # ax3.text(0.1, 0.99, f'C', transform=ax3.transAxes,
+    #             fontsize=16, fontweight='bold', va='top', ha='right')
+    ax4.grid(True, linestyle='--', alpha=0.7)
 
     # --- Create Custom Legends ---
     

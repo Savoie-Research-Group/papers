@@ -4,10 +4,11 @@ import matplotlib.pyplot as plt
 plotting = {
     'uDFT': {'width': 3.5, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#648FFF', 'line': '-'},
     'rDFT': {'width': 2.2, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#FE6100', 'line': '--'},
-    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': None, 'size': 5.5, 'color': '#785EF0', 'line': ':'},
-    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 3.5, 'color': "#39A24E", 'line': ':'},
-    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 3.0, 'color': '#DC267F', 'line': ':'},
-    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 2.5, 'color': '#FFB000', 'line': ':'},
+    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': None, 'size': 6.0, 'color': '#785EF0', 'line': ':'},
+    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 4.0, 'color': "#39A24E", 'line': ':'},
+    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 2.5, 'color': '#DC267F', 'line': ':'},
+    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 3.0, 'color': '#FFB000', 'line': ':'},
+    'MACE-POLAR': {'width': 1.5, 'marker': 'd', 'freq': None, 'size': 3.5, 'color': "#DF82F9FF", 'line': ':'},
     'ORB-OMOL': {'width': 1.5, 'marker': '<', 'freq': None, 'size': 2.5, 'color': '#7B5C73', 'line': ':'}
 }
 
@@ -82,6 +83,8 @@ def get_relative_energies(raw_df, ref_dict):
         #     rel_df['ORB-OMOL'] = raw_df[col] - ref_dict['omol']
         elif 'mace' in col:
             rel_df['MACE-OMOL'] = raw_df[col] - ref_dict['omol']
+        elif 'polar' in col:
+            rel_df['MACE-POLAR'] = raw_df[col] - ref_dict['omol']
         elif 'aimnet2' in col:
             rel_df['AIMNET2'] = raw_df[col] - ref_dict['aimnet2']
         elif 'aim2nse' in col:
@@ -108,6 +111,16 @@ def main():
     ch3cl_h3o_df = pd.merge(ch3cl_h3o_dft, ch3cl_h3o_mlip, on='file', how='inner')
     ch3cl_h3o_rel = get_relative_energies(ch3cl_h3o_df, ch3cl_h3o_reference)
 
+    plot_order = [
+        'uDFT',
+        'rDFT',
+        'AIMNET2-NSE',
+        'AIMNET2',
+        'MACE-POLAR',
+        'MACE-OMOL',
+        'UMA-OMOL'
+    ]
+
     fig, ax = plt.subplots(1, 3, figsize=(6.4, 4.0), sharey=True)
 
     ax[0].set_ylabel("Relative Energy (eV)")
@@ -124,41 +137,44 @@ def main():
     ax[1].grid(True, linestyle='--', alpha=0.7)
     ax[2].grid(True, linestyle='--', alpha=0.7)
 
-    for col in ch3cl_rel.columns:
-        if col != 'R':
-            ps = plotting.get(col)
-            ax[0].plot(ch3cl_rel['R'], ch3cl_rel[col],
-                        label=col,
-                        linewidth=ps['width'], 
-                        marker=ps['marker'], 
-                        markersize=ps['size'], 
-                        markevery=ps['freq'], 
-                        color=ps['color'], 
-                        linestyle=ps['line'])
-    
-    for col in ch3cl_h2o_rel.columns:
-        if col != 'R':
-            ps = plotting.get(col)
-            ax[1].plot(ch3cl_h2o_rel['R'], ch3cl_h2o_rel[col],
-                        label=col,
-                        linewidth=ps['width'], 
-                        marker=ps['marker'], 
-                        markersize=ps['size'], 
-                        markevery=ps['freq'], 
-                        color=ps['color'], 
-                        linestyle=ps['line'])
+    for col in plot_order:
+        if col in ch3cl_rel.columns:
+            if col != 'R':
+                ps = plotting.get(col)
+                ax[0].plot(ch3cl_rel['R'], ch3cl_rel[col],
+                            label=col,
+                            linewidth=ps['width'], 
+                            marker=ps['marker'], 
+                            markersize=ps['size'], 
+                            markevery=ps['freq'], 
+                            color=ps['color'], 
+                            linestyle=ps['line'])
 
-    for col in ch3cl_h3o_rel.columns:
-        if col != 'R':
-            ps = plotting.get(col)
-            ax[2].plot(ch3cl_h3o_rel['R'], ch3cl_h3o_rel[col],
-                        label=col,
-                        linewidth=ps['width'], 
-                        marker=ps['marker'], 
-                        markersize=ps['size'], 
-                        markevery=ps['freq'], 
-                        color=ps['color'], 
-                        linestyle=ps['line'])
+    for col in plot_order:
+        if col in ch3cl_h2o_rel.columns:
+            if col != 'R':
+                ps = plotting.get(col)
+                ax[1].plot(ch3cl_h2o_rel['R'], ch3cl_h2o_rel[col],
+                            label=col,
+                            linewidth=ps['width'], 
+                            marker=ps['marker'], 
+                            markersize=ps['size'], 
+                            markevery=ps['freq'], 
+                            color=ps['color'], 
+                            linestyle=ps['line'])
+
+    for col in plot_order:
+        if col in ch3cl_h3o_rel.columns:
+            if col != 'R':
+                ps = plotting.get(col)
+                ax[2].plot(ch3cl_h3o_rel['R'], ch3cl_h3o_rel[col],
+                            label=col,
+                            linewidth=ps['width'], 
+                            marker=ps['marker'], 
+                            markersize=ps['size'], 
+                            markevery=ps['freq'], 
+                            color=ps['color'], 
+                            linestyle=ps['line'])
 
     handles, labels = ax[0].get_legend_handles_labels()
     unique_labels = dict(zip(labels, handles))
@@ -166,7 +182,7 @@ def main():
     fig.legend(unique_labels.values(), unique_labels.keys(),
                loc='upper center', 
                bbox_to_anchor=(0.5, 0.15), # Place above the figure
-               ncol=len(unique_labels)/2,
+               ncol=4,
                frameon=True) 
 
     plt.tight_layout()

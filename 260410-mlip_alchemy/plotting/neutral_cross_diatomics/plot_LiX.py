@@ -8,10 +8,11 @@ hartree2ev = 27.2113834
 plotting = {
     'uDFT': {'width': 3.5, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#648FFF', 'line': '-'},
     'rDFT': {'width': 2.2, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#FE6100', 'line': '--'},
-    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': None, 'size': 5.5, 'color': '#785EF0', 'line': ':'},
-    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 3.5, 'color': "#39A24E", 'line': ':'},
-    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 3.0, 'color': '#DC267F', 'line': ':'},
-    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 2.5, 'color': '#FFB000', 'line': ':'},
+    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': 2, 'size': 5.0, 'color': '#785EF0', 'line': ':'},
+    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 4.0, 'color': "#39A24E", 'line': ':'},
+    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 2.5, 'color': '#DC267F', 'line': ':'},
+    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 3.0, 'color': '#FFB000', 'line': ':'},
+    'MACE-POLAR': {'width': 1.5, 'marker': 'd', 'freq': None, 'size': 3.5, 'color': "#DF82F9FF", 'line': ':'},
     'ORB-OMOL': {'width': 1.5, 'marker': '<', 'freq': None, 'size': 2.5, 'color': '#7B5C73', 'line': ':'}
 }
 
@@ -43,6 +44,9 @@ def get_formatted_data(label, raw_data, reference_data):
         # Reference data is already sum of component atoms (H + X)
         data['E_rel'] = raw_data.iloc[:, 1] * hartree2ev - reference_data['DFT']
     elif 'OMOL' in label:
+        data['R'] = raw_data['Distance_angs']
+        data['E_rel'] = raw_data.iloc[:, 1] - reference_data['OMOL']
+    elif 'POLAR' in label:
         data['R'] = raw_data['Distance_angs']
         data['E_rel'] = raw_data.iloc[:, 1] - reference_data['OMOL']
     elif 'AIMNET2' in label:
@@ -160,7 +164,9 @@ def main():
     # Load Data
     try:
         dft_scan_data = pd.read_csv('../../data/diatomics/dft/dft_scan_energies.csv')
-        mlip_scan_data = pd.read_csv('../../data/diatomics/mlip/data_all.csv')
+        most_mlip_data = pd.read_csv('../../data/diatomics/mlip/data_all.csv')
+        macepol_data = pd.read_csv('../../data/diatomics/mlip/data_macepol.csv')
+        mlip_scan_data = pd.merge(most_mlip_data, macepol_data, on="Distance_angs", how="inner")
         atomic_reference_data = pd.read_csv('../../data/diatomics/dft/atom_reference_spe.csv')
     except FileNotFoundError as e:
         print(f"Error loading data: {e}")
@@ -194,12 +200,14 @@ def main():
         # Note: Regex allows for strict matching of system name (e.g., HF) to avoid matching "HF2-" if that existed
         dft_pattern = 'Li_' + halogen
         mlip_pattern = "".join(sorted(['Li', halogen]))
+        pol_pattern = 'Li' + halogen
 
         neutral_data = {
             'uDFT': dft_scan_data.filter(regex=f'bond_distance|({dft_pattern}.*_0_.*UKS)'),
             'rDFT': dft_scan_data.filter(regex=f'bond_distance|({dft_pattern}.*_0_.*RKS)'),
-            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({mlip_pattern}.*_charge0_.*fairchem-omol)'),
+            'MACE-POLAR': mlip_scan_data.filter(regex=f'Distance_angs|({pol_pattern}.*_charge0_.*mace-omol-polar)'),
             'MACE-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({mlip_pattern}.*_charge0_.*mace-omol)'),
+            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({mlip_pattern}.*_charge0_.*fairchem-omol)'),
             'ORB-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({mlip_pattern}.*_charge0_.*orb-omol)')
         }
 

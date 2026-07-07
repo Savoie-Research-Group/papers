@@ -7,10 +7,11 @@ hartree2ev = 27.2113834
 plotting = {
     'uDFT': {'width': 3.5, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#648FFF', 'line': '-'},
     'rDFT': {'width': 2.2, 'marker': '', 'freq': None, 'size': 1.0, 'color': '#FE6100', 'line': '--'},
-    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': None, 'size': 5.5, 'color': '#785EF0', 'line': ':'},
-    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 3.5, 'color': "#39A24E", 'line': ':'},
-    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 3.0, 'color': '#DC267F', 'line': ':'},
-    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 2.5, 'color': '#FFB000', 'line': ':'},
+    'AIMNET2': {'width': 1.5, 'marker': 'x', 'freq': 2, 'size': 5.0, 'color': '#785EF0', 'line': ':'},
+    'AIMNET2-NSE': {'width': 1.5, 'marker': 'v', 'freq': None, 'size': 4.0, 'color': "#39A24E", 'line': ':'},
+    'UMA-OMOL': {'width': 1.5, 'marker': 's', 'freq': None, 'size': 2.5, 'color': '#DC267F', 'line': ':'},
+    'MACE-OMOL': {'width': 1.5, 'marker': 'o', 'freq': None, 'size': 3.0, 'color': '#FFB000', 'line': ':'},
+    'MACE-POLAR': {'width': 1.5, 'marker': 'd', 'freq': None, 'size': 3.5, 'color': "#DF82F9FF", 'line': ':'},
     'ORB-OMOL': {'width': 1.5, 'marker': '<', 'freq': None, 'size': 2.5, 'color': '#7B5C73', 'line': ':'}
 }
 
@@ -44,6 +45,9 @@ def plot_dataset(ax, data_dict, reference_data, subplot_label=None):
         elif 'OMOL' in label:
             data['R'] = raw_data['Distance_angs']
             data['E_rel'] = raw_data.iloc[:, 1] - 2 * reference_data['OMOL']
+        elif 'POLAR' in label:
+            data['R'] = raw_data['Distance_angs']
+            data['E_rel'] = raw_data.iloc[:, 1] - 2 * reference_data['OMOL']
         elif 'AIMNET2' in label:
             data['R'] = raw_data['Distance_angs']
             data['E_rel'] = raw_data.iloc[:, 1] - 2 * reference_data['AIMNET2']
@@ -73,7 +77,9 @@ def main():
         dft_scan_data = pd.read_csv('../../data/diatomics/dft/dft_scan_energies.csv')
         most_mlip_data = pd.read_csv('../../data/diatomics/mlip/data_all.csv')
         aimnet2nse_data = pd.read_csv('../../data/diatomics/mlip/combined_energy_aimnet2nse.csv')
+        macepol_data = pd.read_csv('../../data/diatomics/mlip/data_macepol.csv')
         mlip_scan_data = pd.merge(most_mlip_data, aimnet2nse_data, on="Distance_angs", how="inner")
+        mlip_scan_data = pd.merge(mlip_scan_data, macepol_data, on="Distance_angs", how="inner")
         atomic_reference_data = pd.read_csv('../../data/diatomics/dft/atom_reference_spe.csv')
     except Exception as e:
         print(f"Error loading data files: {e}")
@@ -105,20 +111,22 @@ def main():
         charged_data = {
             'uDFT': dft_scan_data.filter(regex=f'bond_distance|({atm}2.*_-2_.*UKS)'),
             'rDFT': dft_scan_data.filter(regex=f'bond_distance|({atm}2.*_-2_.*RKS)'),
-            'AIMNET2': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*aimnet2)'),
             'AIMNET2-NSE': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*aim2nse)'),
-            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*fairchem-omol)'),
+            'AIMNET2': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*aimnet2)'),
+            'MACE-POLAR': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*mace-omol-polar)'),
             'MACE-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*mace-omol)'),
+            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*fairchem-omol)'),
             'ORB-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge-2_.*orb-omol)')
         }
 
         neutral_data = {
             'uDFT': dft_scan_data.filter(regex=f'bond_distance|({atm}2.*_0_.*UKS)'),
             'rDFT': dft_scan_data.filter(regex=f'bond_distance|({atm}2.*_0_.*RKS)'),
-            'AIMNET2': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*aimnet2)'),
             'AIMNET2-NSE': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*aim2nse)'),
-            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*fairchem-omol)'),
+            'AIMNET2': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*aimnet2)'),
+            'MACE-POLAR': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*mace-omol-polar)'),
             'MACE-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*mace-omol)'),
+            'UMA-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*fairchem-omol)'),
             'ORB-OMOL': mlip_scan_data.filter(regex=f'Distance_angs|({atm}2.*_charge0_.*orb-omol)')
         }
         
