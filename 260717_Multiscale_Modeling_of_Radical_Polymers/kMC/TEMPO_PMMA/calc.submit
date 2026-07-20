@@ -1,0 +1,28 @@
+#!/bin/sh
+#SBATCH --job-name KMC40
+#SBATCH -A bsavoie
+#SBATCH --nodes=1
+#SBATCH --ntasks=128
+#SBATCH --time=5-00:00:00
+#SBATCH --output KMC40.out
+#SBATCH --error KMC40.err
+#SBATCH -p cpu
+
+pw
+#cd into submission trajectory
+cd /scratch/bell/yukselb/md_TEMPO/sc100/pf08/Eelec_inter # CHANGE DIRECTORY
+echo Working directory is /scratch/bell/yukselb/md_TEMPO/sc100/pf08/Eelec_inter # CHANGE DIRECTORY
+echo Running on host `hostname`
+echo Time is `date`
+
+module load conda
+conda activate /home/yukselb/.conda/envs/python2_env
+
+cd .
+python -u ~/bin/mixed_cond/kmc.py -traj f1_equil_npt.1.0.lammpstrj -data f1_ovito.data -l 50000 -e 500 -Nkmc 40 -Vtype '0.004 5 0.8' -Vintra 0.31 -dt 0.01 -Etype dE.txt -python /apps/spack/bell/apps/anaconda/2019.10-py27-gcc-4.8.5-bdr3zxp/bin/ -taffi /home/yukselb/bin/taffi/ -kmc_tmax 1 -tmax 1 -o KMC40 -btypes "5 6" -stypes "1 2 3 4" -lmbdi_const 1.05 -keep_frac 0.5 -network_rate_thresh 1000000
+
+wait
+
+echo Time is `date`
+cd /scratch/bell/yukselb/md_TEMPO/sc100/pf08/Eelec_inter & # CHANGE DIRECTORY
+wait

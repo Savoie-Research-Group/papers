@@ -1,0 +1,27 @@
+#!/bin/sh
+#SBATCH --job-name ML_FF_pteo
+#SBATCH -A bsavoie
+#SBATCH -p a10
+#SBATCH -q normal
+#SBATCH --mem=50G
+#SBATCH --gres=gpu:1
+#SBATCH --time=14-00:00:00
+#SBATCH --output ML_FF.out
+#SBATCH --error ML_FF.err
+
+#cd into submission trajectory
+cd /scratch/gilbreth/yukselb/pteo_dimer/10mol # CHANGE DIRECTORY
+echo Working directory is /scratch/gilbreth/yukselb/pteo_dimer/10mol # CHANGE DIRECTORY
+echo Running on host `hostname`
+echo Time is `date`
+
+module load conda 
+conda activate /home/yukselb/.conda/envs/ML_FF_fair
+
+cd .
+python /home/yukselb/energycalc/mlip_md_mace.py PTEO_10dimer_v2.xyz --model mace
+wait
+#--model mace
+echo Time is `date`
+cd /scratch/gilbreth/yukselb/pteo_dimer/10mol & # CHANGE DIRECTORY
+wait

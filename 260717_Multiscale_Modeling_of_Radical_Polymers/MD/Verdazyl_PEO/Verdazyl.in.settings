@@ -1,0 +1,25 @@
+# Non-bonded interactions (pair-wise)
+pair_coeff   1  1  lj/gromacs/coul/gromacs  0.8567134159981415  4.412656619524241  #TN6a-TN6a
+pair_coeff   1  2  lj/gromacs/coul/gromacs  0.6918327978361386  4.470338362574077  #TN6a-TN1
+pair_coeff   1  3  lj/gromacs/coul/gromacs  0.8937798897377868  5.3354185738124205  #TN6a-SN5a
+pair_coeff   1  4  lj/gromacs/coul/gromacs  1.1153784634441937  4.03818043621602  #TN6a-SN3a
+pair_coeff   2  2  lj/gromacs/coul/gromacs  0.5586846327183205  4.5480201056239125  #TN1-TN1
+pair_coeff   2  3  lj/gromacs/coul/gromacs  0.7217655638630852  5.403100316862256  #TN1-SN5a
+pair_coeff   2  4  lj/gromacs/coul/gromacs  0.900715908728624  4.105862179265856  #TN1-SN3a
+pair_coeff   3  3  lj/gromacs/coul/gromacs  0.9324500776831808  6.278180528100599  #SN5a-SN5a
+pair_coeff   3  4  lj/gromacs/coul/gromacs  1.1636363122802036  4.970942390504199  #SN5a-SN3a
+pair_coeff   4  4  lj/gromacs/coul/gromacs  1.4521415137005733  3.6837042529077983  #SN3a-SN3a
+
+# Streching interactions
+bond_coeff	1	harmonic	40.260997	2.152218	#TN6a-TN1
+bond_coeff	2	harmonic	180.456493	2.645759	#TN1-SN5a
+bond_coeff	3	harmonic	37.555576	2.340967	#SN5a-SN3a
+bond_coeff	4	harmonic	8.557601	3.286771	#SN3a-SN3a
+
+# Bending interactions
+angle_coeff	1	harmonic	40.212387	126.000000	#TN1-TN6a-TN1
+angle_coeff	2	harmonic	54.326624	81.000000	#TN6a-TN1-SN5a
+angle_coeff	3	harmonic	53.231883	94.000000	#TN1-SN5a-TN1
+angle_coeff	4	harmonic	7.170870	150.979787	#TN1-SN5a-SN3a
+angle_coeff	5	harmonic	0.000000	161.000000	#SN5a-SN3a-SN3a
+angle_coeff	6	harmonic	0.387	176.356415	#SN3a-SN3a-SN3a

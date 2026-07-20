@@ -1,0 +1,26 @@
+#!/bin/sh
+#SBATCH --job-name ML_FF_pteo
+#SBATCH -A bsavoie
+#SBATCH --nodes=1
+#SBATCH --ntasks=20
+#SBATCH --time=14-00:00:00
+#SBATCH --output ML_FF.out
+#SBATCH --error ML_FF.err
+#SBATCH -p cpu
+
+#cd into submission trajectory
+cd /scratch/bell/yukselb/New_ml_FF_pteo_10tetramer_shrink # CHANGE DIRECTORY
+echo Working directory is /scratch/bell/yukselb/New_ml_FF_pteo_10tetramer_shrink # CHANGE DIRECTORY
+echo Running on host `hostname`
+echo Time is `date`
+
+module load conda 
+conda activate /home/yukselb/.conda/envs/ML_FF_fair
+
+cd .
+python mlip_md.py packed_20.xyz
+wait
+
+echo Time is `date`
+cd /scratch/bell/yukselb/New_ml_FF_pteo_10tetramer_shrink & # CHANGE DIRECTORY
+wait
