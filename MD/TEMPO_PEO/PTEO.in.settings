@@ -1,0 +1,33 @@
+# Non-bonded interactions (pair-wise)
+pair_coeff   1  1  lj/gromacs/coul/gromacs  0.5  4.042796320046888  #TN6a-TN6a
+pair_coeff   1  2  lj/gromacs/coul/gromacs  0.5460662114314266  4.340262176389946  #TN6a-TC3
+pair_coeff   1  3  lj/gromacs/coul/gromacs  0.5  4.958042024450748  #TN6a-SC3
+pair_coeff   1  4  lj/gromacs/coul/gromacs  1.1564357685449815  5.069712536873523  #TN6a-SN4a
+pair_coeff   1  5  lj/gromacs/coul/gromacs  0.5  4.236948104807813  #TN6a-SN3a
+pair_coeff   2  2  lj/gromacs/coul/gromacs  0.5963766145341431  4.657728032733004  #TC3-TC3
+pair_coeff   2  3  lj/gromacs/coul/gromacs  0.5460662114314266  5.265507880793806  #TC3-SC3
+pair_coeff   2  4  lj/gromacs/coul/gromacs  1.2629809977862965  5.377178393216582  #TC3-SN4a
+pair_coeff   2  5  lj/gromacs/coul/gromacs  0.5460662114314266  4.544413961150871  #TC3-SN3a
+pair_coeff   3  3  lj/gromacs/coul/gromacs  0.5  5.893287728854608  #SC3-SC3
+pair_coeff   3  4  lj/gromacs/coul/gromacs  1.1564357685449815  5.994958241277383  #SC3-SN4a
+pair_coeff   3  5  lj/gromacs/coul/gromacs  0.5  5.162193809211673  #SC3-SN3a
+pair_coeff   4  4  lj/gromacs/coul/gromacs  2.674687373540444  6.116628753700159  #SN4a-SN4a
+pair_coeff   4  5  lj/gromacs/coul/gromacs  1.1564357685449815  5.2738643216344485  #SN4a-SN3a
+pair_coeff   5  5  lj/gromacs/coul/gromacs  0.5  4.451099889568738  #SN3a-SN3a
+
+# Streching interactions
+bond_coeff	1	harmonic	75.242651	2.513958	#TN6a-SC3
+bond_coeff	2	harmonic	139.368677	1.582014	#TC3-SC3
+bond_coeff	3	harmonic	102.583353	2.467460	#SC3-SN4a
+bond_coeff	4	harmonic	14.544931	2.946431	#SN4a-SN3a
+bond_coeff	5	harmonic	35.911951	3.524367	#SN3a-SN3a
+
+# Bending interactions
+angle_coeff	1	harmonic	23.994997	63.463589	#SC3-TN6a-SC3
+angle_coeff	2	harmonic	55.377978	63.381178	#TN6a-SC3-TC3
+angle_coeff	3	harmonic	2.107713	126.000000	#TN6a-SC3-SN4a
+angle_coeff	4	harmonic	7.704110	159.357559	#TC3-SC3-SN4a
+angle_coeff	5	harmonic	70.413622	63.245096	#SC3-SN4a-SC3
+angle_coeff	6	harmonic	2.093285	172.663552	#SC3-SN4a-SN3a
+angle_coeff	7	harmonic	3.150793	123.427963	#SN4a-SN3a-SN3a
+angle_coeff	8	harmonic	0.387	180.000000	#SN3a-SN3a-SN3a

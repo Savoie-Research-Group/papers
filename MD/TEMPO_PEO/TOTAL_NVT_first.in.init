@@ -1,0 +1,157 @@
+# lammps input file for polymer simulation with dilute ions
+
+# VARIABLES
+variable        data_name       index   f1.data
+variable        settings_name   index   PTEO.in.settings
+variable        log_name        index   f1.log
+variable        nSteps_relax    index   1000 # number of data steps for the rescaling box
+variable        nSteps_reshape  index   200000 # number of data steps for the rescaling box
+variable        nSteps_anneal   index   10000000 # number of data steps for the rescaling box
+variable        nSteps_equil    index   10000000 # number of data steps for the rescaling box
+variable        nSteps_npt      index   5000000 # number of data steps for NPT
+variable        nSteps_nvt      index   5000000 # number of data steps for NVT
+variable        nSteps_extend   index   0 # number of data steps for the rescaling box
+variable        avg_freq        index   100
+variable        coords_freq     index   100
+variable        thermo_freq     index   100
+variable        dump4avg        index   10
+variable        vseed           index   42443 
+variable        ANNEAL_TEMP     index   300.0 # Temperature to start from in annealing
+variable        FINAL_TEMP      index   300.0 # Temperature ramped to during the final anneal
+variable        pressure        index   1.0 # Pressure during the simulations
+
+variable        run             index   1
+# Change the name of the log output #
+log ${log_name}
+
+#===========================================================
+# GENERAL PROCEDURES
+#===========================================================
+units		real	# g/mol, angstroms, fs, kcal/mol, K, atm, charge*angstrom
+dimension	3	# 3 dimensional simulation
+newton		on	# use Newton's 3rd law
+boundary	p p p	# periodic boundary conditions 
+atom_style	full   # molecular + charge (spherical beads)
+dielectric	  2.5      # dielectric
+
+#===========================================================
+# FORCE FIELD DEFINITION
+#===========================================================
+special_bonds  lj   0.0 1.0 1.0  coul 0.0 0.0 0.0     # NO     1-4 LJ/COUL interactions
+pair_style         hybrid/overlay lj/gromacs/coul/gromacs 9.0 12.0 0.0 12.0
+bond_style         hybrid harmonic
+angle_style        hybrid harmonic
+#dihedral_style     hybrid opls
+#===========================================================
+# SETUP SIMULATIONS
+#===========================================================
+
+# READ IN COEFFICIENTS/COORDINATES/TOPOLOGY
+read_data ${data_name}
+include ${settings_name}
+
+
+# SET RUN PARAMETERS
+timestep	1.0		# fs
+run_style	verlet 		# Velocity-Verlet integrator
+neigh_modify every 1 delay 0  # More relaxed rebuild criteria can be used
+
+# SET QUATERNIONS COMPUTE FIX
+# THERMODYANMIC VARIABLES
+variable        my_step equal   step
+variable        my_rho  equal   density
+variable        my_vol  equal   vol
+variable        my_pe   equal   pe
+variable        my_ke   equal   ke
+variable        my_etot equal   etotal
+
+dump relax all custom ${coords_freq} minimization.lammpstrj id type x y z vx vy vz mol
+dump_modify relax  sort  id
+
+# INITIALIZE VELOCITIES AND CREATE THE CONSTRAINED RELAXATION FIX
+velocity        all create 300.0 ${vseed} mom yes rot yes     # DRAW VELOCITIES
+
+fix relax all nve/limit 0.01
+run             1000
+unfix relax
+undump relax
+
+#===========================================================
+# RESHAPE BOX FOR CONSTANT DENSITY NVT
+#===========================================================
+
+velocity        all create ${ANNEAL_TEMP} ${vseed} mom yes rot yes     # DRAW VELOCITIES
+fix mom all momentum 1000 linear 1 1 1 angular # Zero out system linear and angular momentum every ps
+fix equil all nvt temp ${ANNEAL_TEMP} ${FINAL_TEMP} 1.0   # NVT, nose-hoover 100 fs T relaxation
+fix reshape  all deform 1 x final -41.4855778296 41.4855778296 y final -41.4855778296 41.4855778296 z final -41.4855778296 41.4855778296 units box
+compute dynamics_temp all temp
+variable rot_temp equal c_dynamics_temp
+compute rot_press all pressure dynamics_temp
+variable rot_press equal c_rot_press
+fix therm all print ${thermo_freq} "${my_step} ${my_rho} ${my_vol} ${rot_temp} ${rot_press} ${my_pe} ${my_ke} ${my_etot}" file "thermo_nvt.avg" screen "no" title "# Step Density Volume Temp Press PotEng KinEng TotEng"
+
+dump reshape all custom ${coords_freq} nvt.lammpstrj id mol type x y z
+dump_modify reshape sort  id
+
+run             ${nSteps_nvt}
+unfix equil
+unfix reshape
+undump reshape
+unfix therm
+unfix mom
+uncompute rot_press
+uncompute dynamics_temp
+
+#===========================================================
+# RUN NPT_0_0
+#===========================================================
+
+# UPDATE RUN PARAMETERS AND CREATE FIX
+fix mom all momentum 1000 linear 1 1 1 angular # Zero out system linear and angular momentum every ps 
+fix equil_npt all npt temp 300.0 300.0 15.0 iso 1.0 1.0 150.0
+compute_modify equil_npt_temp extra/dof 0
+# CREATE COORDINATE DUMPS FOR EQUIL_NPTIBRIUM
+dump equil_npt all custom ${coords_freq} f1_equil_npt.0.0.lammpstrj id mol type x y z 
+dump_modify equil_npt sort  id
+variable rot_temp equal c_equil_npt_temp
+compute rot_press all pressure equil_npt_temp
+variable rot_press equal c_rot_press
+fix therm all print ${thermo_freq} "${my_step} ${my_rho} ${my_vol} ${rot_temp} ${rot_press} ${my_pe} ${my_ke} ${my_etot}" file "f1_thermo.equil_npt.0.0.avg" screen "no" title "# Step Density Volume Temp Press PotEng KinEng TotEng"
+
+# RUN EQUIL_NPT
+run		${nSteps_npt}
+
+unfix mom
+unfix equil_npt
+unfix therm
+undump equil_npt
+uncompute rot_press
+
+#===========================================================
+# RUN NPT_1_0
+#===========================================================
+
+# UPDATE RUN PARAMETERS AND CREATE FIX
+fix mom all momentum 1000 linear 1 1 1 angular # Zero out system linear and angular momentum every ps 
+fix equil_npt all npt temp 300.0 300.0 15.0 iso 1.0 1.0 150.0
+compute_modify equil_npt_temp extra/dof 0
+# CREATE COORDINATE DUMPS FOR EQUIL_NPTIBRIUM
+dump equil_npt all custom ${coords_freq} f1_equil_npt.1.0.lammpstrj id mol type x y z 
+dump_modify equil_npt sort  id
+variable rot_temp equal c_equil_npt_temp
+compute rot_press all pressure equil_npt_temp
+variable rot_press equal c_rot_press
+fix therm all print ${thermo_freq} "${my_step} ${my_rho} ${my_vol} ${rot_temp} ${rot_press} ${my_pe} ${my_ke} ${my_etot}" file "f1_thermo.equil_npt.1.0.avg" screen "no" title "# Step Density Volume Temp Press PotEng KinEng TotEng"
+
+# RUN EQUIL_NPT
+run		${nSteps_npt}
+
+unfix mom
+unfix equil_npt
+unfix therm
+undump equil_npt
+uncompute rot_press
+
+# WRITE RESTART FILES, CLEANUP, AND EXIT
+write_restart   f1_npt.1.0.end.restart
+write_data   f1_npt.1.0.end.data pair ij

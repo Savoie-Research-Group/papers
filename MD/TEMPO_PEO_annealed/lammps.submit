@@ -1,0 +1,20 @@
+#!/bin/sh 
+#SBATCH --job-name MD_anneal_pteo_2
+#SBATCH -A bsavoie
+#SBATCH --nodes=1
+#SBATCH --ntasks=128
+#SBATCH --time=14-00:00:00
+#SBATCH --output MD_anneal.out
+#SBATCH --error MD_anneal.err
+#SBATCH -p cpu
+
+#cd into submission trajectory
+cd /scratch/bell/yukselb/md_PTEO/sc100_round/pf08_2_anneal2
+echo Working directory is /scratch/bell/yukselb/md_PTEO/sc100_round/pf08_2_anneal2
+echo Running on host `hostname`
+echo Time is `date`
+
+cd .
+
+/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in TOTAL_anneal.in.init >> TOTAL_anneal.in.out
+

@@ -1,0 +1,23 @@
+#!/bin/sh 
+#SBATCH --job-name f1_equil08
+#SBATCH -A bsavoie
+#SBATCH --nodes=1
+#SBATCH --ntasks=128
+#SBATCH --time=10-00:00:00
+#SBATCH --output f1_equil.out
+#SBATCH --error f1_equil.err
+#SBATCH -p cpu
+
+#cd into submission trajectory
+cd /scratch/bell/yukselb/md_TEMPO/sc100/pf08
+echo Working directory is /scratch/bell/yukselb/md_TEMPO/sc100/pf08
+echo Running on host `hostname`
+echo Time is `date`
+
+cd .
+#/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in f1_equil.in.init >> f1_equil.in.out && \
+#/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in f1_reshape.0.in.init >> f1_reshape.0.in.out && \
+#/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in f1_npt.0.0.in.init >> f1_npt.0.0.in.out && \
+#/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in f1_npt.1.0.in.init >> f1_npt.1.0.in.out
+/depot/bsavoie/apps/openmpi/4.1.1/bin/mpirun -np 128 /depot/bsavoie/apps/lammps_asphere_bell/exe/lmp_mpi -in TOTAL_NVT_first.in.init >> TOTAL_NVT_first.in.out
+
